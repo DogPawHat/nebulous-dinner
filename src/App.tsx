@@ -1,10 +1,12 @@
 import React from 'react';
 import styled, { keyframes } from 'react-emotion';
 
+import AppHeader from './components/AppHeader';
+
 import logo from './logo.svg';
 
 const logoSpin = keyframes`
-  grom { transform: rotate(0deg); }
+  from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 `;
 
@@ -17,20 +19,13 @@ const AppLogo = styled('img')`
   height: 80px;
 `;
 
-const AppHeader = styled('header')`
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-`;
-
 const AppTitle = styled('h1')`
   font-size: 1.5em;
 `;
 
 const AppIntro = styled('p')`
   font-size: large;
-`
+`;
 
 const App = () => (
   <AppRoot>
