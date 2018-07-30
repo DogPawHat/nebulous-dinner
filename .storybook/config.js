@@ -1,8 +1,19 @@
-import { configure } from '@storybook/react';
+import React from 'react';
+import { configure, addDecorator } from '@storybook/react';
+import { ThemeProvider } from 'emotion-theming';
+
+import { theme } from '../src/themeStyled';
+
+import '../src/index.css';
+
+const req = require.context('../src/components', true, /_story\.tsx$/)
+
+addDecorator(story => (
+  <ThemeProvider theme={theme}>{story()}</ThemeProvider>
+));
 
 function loadStories() {
-  require('../src/stories/index.tsx');
-  // You can require as many stories as you need.
+  req.keys().forEach((filename) => req(filename))
 }
 
 configure(loadStories, module);

@@ -1,19 +1,18 @@
 import React from 'react';
 import {
-  borderColor,
-  color
+  width
 } from 'styled-system';
-import styled from '../themeStyled';
+import styled, { activeColor, activeBorderColor, activeBg } from '../../themeStyled';
 
 import IConverterField from './IConverterField';
 
+// Styled Components
 const ConverterFieldRoot = styled('div')`
-  ${color}
-  ${borderColor}
+  ${activeBg}
+  ${activeBorderColor}
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
-  width: 564px;
   height: 98px;
   padding: 2px 24px;
 `;
@@ -21,15 +20,19 @@ const ConverterFieldRoot = styled('div')`
 const ConverterDescription = styled('p')`
   font-size: ${props => props.theme.fontSizes.body};
   font-weight: ${props => props.theme.fontWeights.medium};
+  padding: 0;
+  margin: 0;
   text-transform: uppercase;
   line-height: 38px;
-  ${color}
+  ${activeColor}
 `;
 
 const ConverterInput = styled('p')`
   font-size: ${props => props.theme.fontSizes.large};
   font-weight: ${props => props.theme.fontWeights.medium};
   color: ${props => props.theme.colors.text.black};
+  padding: 0;
+  margin: 0;
   border: none;
   background: transparent;
   line-height: 38px;
@@ -39,30 +42,14 @@ const ConvertStrong = styled('strong')`
   font-size: ${props => props.theme.fontSizes.huge};
 `;
 
-const themeKeys = {
-  active: {
-    rootBg: "bg.blue",
-    rootBorderColor: "border.blue",
-    descriptionColor: "text.blue"
-  },
-  inactive: {
-    rootBg: "bg.white",
-    rootBorderColor: "border.grey",
-    descriptionColor: "text.grey"
-  }
-};
-
-const getActiveKeys = (active: boolean) => active ?
-  themeKeys.active :
-  themeKeys.inactive;
-
-const ConverterField: IConverterField = ({ description, active }) => (
+// Component
+const ConverterField: IConverterField = ({ description, active, className }) => (
   <ConverterFieldRoot 
-    bg={getActiveKeys(active).rootBg}
-    borderColor={getActiveKeys(active).rootBorderColor}
+    active={active}
+    className={className}
   >
     <ConverterDescription 
-      color={getActiveKeys(active).descriptionColor}
+      active={active}
     >{description}</ConverterDescription>
     <ConverterInput>
       <ConvertStrong>€ 2,000</ConvertStrong>.00
@@ -70,4 +57,6 @@ const ConverterField: IConverterField = ({ description, active }) => (
   </ConverterFieldRoot>
 );
 
-export default ConverterField;
+
+
+export default styled(ConverterField)`${width}`;
