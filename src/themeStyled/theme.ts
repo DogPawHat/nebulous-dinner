@@ -16,7 +16,8 @@ const theme: ITheme = {
   colors: {
     bg: {
       blue: `rgba(110, 192, 230, 0.03)`,
-      white: `#ffffff`
+      white: `#ffffff`,
+      black: `#32323c`
     },
     border: {
       blue: `#6ec0e6`,

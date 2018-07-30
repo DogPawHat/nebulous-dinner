@@ -1,3 +1,14 @@
-declare module '*.svg'
-declare module '*.png'
-declare module '*.jpg'
+declare module '*.svg' {
+  let _: string;
+  export default _;
+}
+
+declare module '*.png' {
+  let _: string;
+  export default _;
+}
+
+declare module '*.jpg'{
+  let _: string;
+  export default _;
+}

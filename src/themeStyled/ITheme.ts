@@ -9,6 +9,7 @@ interface ITheme {
     bg: {
       blue: string;
       white: string;
+      black: string;
     };
     border: {
       blue: string;

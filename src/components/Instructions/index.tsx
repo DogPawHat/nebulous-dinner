@@ -24,8 +24,8 @@ const InstructionsDescription = styled('p')`
 `;
 
 
-// Base Component
-const BaseInstructions: IInstruction = ({ className }) => (
+// Main Component
+const Instructions: IInstruction = ({ className }) => (
   <div className={className}>
     <InstructionsHeading>Let's set up your transaction!</InstructionsHeading>
     <InstructionsDescription>
@@ -33,8 +33,5 @@ const BaseInstructions: IInstruction = ({ className }) => (
     </InstructionsDescription>
   </div>
 );
-
-// Main Component
-const Instructions = BaseInstructions;
 
 export default Instructions
