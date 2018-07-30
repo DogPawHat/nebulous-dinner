@@ -3,6 +3,17 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import Step from './Step';
+import NavBar from '.';
+
+
+const navBarStories = storiesOf('NavBar', module)
+
+navBarStories.add(
+  'with first step active',
+  withInfo({ inline: true })(() => (
+    <NavBar currentStep='step_1' width={`${188 * 3}px`}/>
+  ))
+)
 
 const stepStories = storiesOf('Step', module)
 

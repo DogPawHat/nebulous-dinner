@@ -43,11 +43,15 @@ const StepDescription = styled('h5')`
 `;
 
 // Component
-const Step: IStep = ({ active, stepTracker, stepDescription, className }) => (
+const BaseStep: IStep = ({ active, stepTracker, stepDescription, className }) => (
   <StepRoot active={active} className={className}>
     <StepTracker active={active}>{stepTracker}</StepTracker>
     <StepDescription active={active}>{stepDescription}</StepDescription>
   </StepRoot>
 );
 
-export default styled(Step)`${width}`;
+const Step = styled(BaseStep)`
+  ${width}
+`;
+
+export default Step;
