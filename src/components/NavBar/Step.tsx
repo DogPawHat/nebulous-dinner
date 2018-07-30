@@ -5,7 +5,7 @@ import styled, {activeColor, activeBorderColor, clearSpace} from '../../themeSty
 
 // Interfaces
 interface IStepProps {
-  width: any;
+  width?: any;
   active: boolean;
   stepTracker: string;
   stepDescription: string;

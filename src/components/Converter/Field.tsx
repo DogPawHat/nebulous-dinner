@@ -1,30 +1,29 @@
-import React from 'react';
-import {
-  width
-} from 'styled-system';
-import styled, { activeColor, activeBorderColor, activeBg } from '../../themeStyled';
+import React, { SFC } from 'react';
+import styled, {
+  activeColor,
+  activeBg
+} from '../../themeStyled';
 
-import IConverterField from './IConverterField';
+// Interfaces
+export interface IConverterFieldProps {
+  description: string;
+  active: boolean;
+  className?: string;
+}
+
+type IConverterField = SFC<IConverterFieldProps>;
+
 
 // Styled Components
-const ConverterFieldRoot = styled('div')`
-  ${activeBg}
-  ${activeBorderColor}
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  height: 98px;
-  padding: 2px 24px;
-`;
 
 const ConverterDescription = styled('p')`
+  ${activeColor}
   font-size: ${props => props.theme.fontSizes.body};
   font-weight: ${props => props.theme.fontWeights.medium};
   padding: 0;
   margin: 0;
   text-transform: uppercase;
   line-height: 38px;
-  ${activeColor}
 `;
 
 const ConverterInput = styled('p')`
@@ -43,20 +42,20 @@ const ConvertStrong = styled('strong')`
 `;
 
 // Component
-const ConverterField: IConverterField = ({ description, active, className }) => (
-  <ConverterFieldRoot 
-    active={active}
-    className={className}
-  >
-    <ConverterDescription 
-      active={active}
-    >{description}</ConverterDescription>
+const BaseField: IConverterField = ({ description, active, className }) => (
+  <div className={className}>
+    <ConverterDescription active={active}>{description}</ConverterDescription>
     <ConverterInput>
       <ConvertStrong>€ 2,000</ConvertStrong>.00
     </ConverterInput>
-  </ConverterFieldRoot>
+  </div>
 );
 
+const Field = styled(BaseField)`
+  ${activeBg}
+  width: 100%;
+  height: 98px;
+  padding: 2px 24px;
+`;
 
-
-export default styled(ConverterField)`${width}`;
+export default Field;
