@@ -3,8 +3,8 @@
   font-style: normal;
   font-weight: 500;
   src: 
-    url('/assets/fonts/post-grotesk/webfonts/PostGrotesk-Medium.woff2') format('woff2'),
-    url('/assets/fonts/post-grotesk/webfonts/PostGrotesk-Medium.woff') format('woff');
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-Medium.woff2") format("woff2"),
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-Medium.woff") format("woff");
 }
 
 @font-face {
@@ -12,8 +12,8 @@
   font-style: normal;
   font-weight: bold;
   src: 
-    url('/assets/fonts/post-grotesk/webfonts/PostGrotesk-Bold.woff2') format('woff2'),
-    url('/assets/fonts/post-grotesk/webfonts/PostGrotesk-Bold.woff') format('woff');
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-Bold.woff2") format("woff2"),
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-Bold.woff") format("woff");
 }
 
 @font-face {
@@ -21,12 +21,39 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url('/assets/fonts/post-grotesk/webfonts/PostGrotesk-Book.woff2') format('woff2'),
-    url('/assets/fonts/post-grotesk/webfonts/PostGrotesk-Book.woff') format('woff');
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-Book.woff2") format("woff2"),
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-Book.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Post Grotesk";
+  font-style: italic;
+  font-weight: 500;
+  src: 
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-MediumItalic.woff2") format("woff2"),
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-MediumItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Post Grotesk";
+  font-style: italic;
+  font-weight: bold;
+  src: 
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-BoldItalic.woff2") format("woff2"),
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Post Grotesk";
+  font-style: italic;
+  font-weight: normal;
+  src:
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-BookItalic.woff2") format("woff2"),
+    url("./assets/fonts/post-grotesk/webfonts/PostGrotesk-BookItalic.woff") format("woff");
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Post Grotesk", sans-serif;
+  font-family: "Post Grotesk"
 }

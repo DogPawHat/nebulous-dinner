@@ -1,20 +1,29 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import AppHeader from '../components/AppHeader';
-import TestFont from '../components/TestFont';
+import { storiesOf } from '@storybook/react';
+import React from 'react';
+
+import ConverterField from '../ConverterField';
+
+import { ThemeProvider } from 'emotion-theming';
+
+import { theme } from '../themeStyled';
 
 import '../index.css';
 
-const stories = storiesOf("Components", module);
+const stories = storiesOf('ConverterField', module).addDecorator(story => (
+  <ThemeProvider theme={theme}>{story()}</ThemeProvider>
+));
 
 stories.add(
-  "AppHeader test",
-  withInfo({ inline: true })(() => <AppHeader>Hello!</AppHeader>)
+  'active',
+  withInfo({ inline: true })(() => (
+    <ConverterField active={true} description="you send" />
+  ))
 );
 
-
 stories.add(
-  "TestFont test",
-  withInfo({ inline: true })(() => <TestFont>Hello!</TestFont>)
+  'not active',
+  withInfo({ inline: true })(() => (
+    <ConverterField active={false} description="reciver gets" />
+  ))
 );
