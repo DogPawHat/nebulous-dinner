@@ -1,5 +1,5 @@
 import React, { SFC } from 'react';
-import { width } from 'styled-system';
+import { width, space } from 'styled-system';
 
 import styled from '../../themeStyled';
 import cfLogo from './logo.svg';
@@ -25,6 +25,7 @@ const BaseSiteHeader: ISiteHeader = ({ className }) => (
 
 const SiteHeader = styled(BaseSiteHeader)`
   ${width}
+  ${space}
   background-color: ${props => props.theme.colors.bg.black};
   height: 66px;
 `;

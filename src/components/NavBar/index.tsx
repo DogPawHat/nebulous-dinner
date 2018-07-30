@@ -1,5 +1,5 @@
 import React, { SFC } from 'react';
-import { width } from 'styled-system';
+import { width, space } from 'styled-system';
 
 import styled from '../../themeStyled';
 
@@ -9,7 +9,6 @@ import Step from './Step';
 interface INavBarProps {
   className?: string;
   currentStep: 'step_1' | 'step_2' | 'step_3';
-  width: any;
 }
 
 type INavBar = SFC<INavBarProps>;
@@ -41,9 +40,10 @@ const BaseNavBar: INavBar = ({ className, currentStep }) => (
 
 // Style Main Component
 const NavBar = styled(BaseNavBar)`
+  ${width}
+  ${space}
   display: flex;
   flex-direction: row;
-  ${width};
 `;
 
 export default NavBar;

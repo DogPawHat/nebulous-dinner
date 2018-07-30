@@ -1,5 +1,5 @@
 import React, { SFC } from 'react';
-import { } from 'react-emotion';
+import { space } from 'styled-system';
 
 import styled from '../../themeStyled';
 
@@ -15,17 +15,19 @@ const InstructionsHeading = styled('h3')`
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes.large};
   color: ${props => props.theme.colors.text.black};
+  margin-top: 0;
 `;
 
 const InstructionsDescription = styled('p')`
   font-weight: ${props => props.theme.fontWeights.book};
   font-size: ${props => props.theme.fontSizes.body};
   color: ${props => props.theme.colors.text.darkgrey};
+  margin-bottom: 0;
 `;
 
 
 // Main Component
-const Instructions: IInstruction = ({ className }) => (
+const BaseInstructions: IInstruction = ({ className }) => (
   <div className={className}>
     <InstructionsHeading>Let's set up your transaction!</InstructionsHeading>
     <InstructionsDescription>
@@ -33,5 +35,9 @@ const Instructions: IInstruction = ({ className }) => (
     </InstructionsDescription>
   </div>
 );
+
+const Instructions = styled(BaseInstructions)`
+  ${space}
+`;
 
 export default Instructions

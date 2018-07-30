@@ -9,6 +9,6 @@ const headerStories = storiesOf('Header', module)
 headerStories.add(
   'with logo',
   withInfo({ inline: true })(() => (
-    <SiteHeader width={1} />
+    <SiteHeader width={1} px='228px'/>
   ))
 )
