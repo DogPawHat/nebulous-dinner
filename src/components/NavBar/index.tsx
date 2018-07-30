@@ -9,20 +9,15 @@ import Step from './Step';
 interface INavBarProps {
   className?: string;
   currentStep: 'step_1' | 'step_2' | 'step_3';
+  width: any;
 }
 
 type INavBar = SFC<INavBarProps>;
 
-// Styled Components
-const NavBarRoot = styled('div')`
-  display: flex;
-  flex-direction: row;
-`;
-
 // Main Components
 
 const BaseNavBar: INavBar = ({ className, currentStep }) => (
-  <NavBarRoot className={className}>
+  <div className={className}>
     <Step
       active={currentStep === 'step_1'}
       width={1 / 3}
@@ -41,11 +36,13 @@ const BaseNavBar: INavBar = ({ className, currentStep }) => (
       stepTracker="Step 3"
       stepDescription="Make payment"
     />
-  </NavBarRoot>
+  </div>
 );
 
 // Style Main Component
 const NavBar = styled(BaseNavBar)`
+  display: flex;
+  flex-direction: row;
   ${width};
 `;
 

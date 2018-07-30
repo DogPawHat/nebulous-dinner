@@ -1,11 +1,11 @@
 import React, { SFC } from 'react';
 import { width } from 'styled-system';
 
-import styled, {activeColor, activeBorderColor} from '../../themeStyled';
-import { css } from 'react-emotion';
+import styled, {activeColor, activeBorderColor, clearSpace} from '../../themeStyled';
 
 // Interfaces
 interface IStepProps {
+  width: any;
   active: boolean;
   stepTracker: string;
   stepDescription: string;
@@ -15,19 +15,6 @@ interface IStepProps {
 type IStep = SFC<IStepProps>;
 
 // Styled Components
-const clearSpace = css`
-  padding: 0;
-  margin: 0;
-`;
-
-const StepRoot = styled('div')`
-  ${activeBorderColor} border-width: 0;
-  border-style: none;
-  border-bottom-style: solid;
-  border-bottom-width: 4px;
-  padding: 0 0 12px 44px;
-`;
-
 const StepTracker = styled('h6')`
   ${activeColor}
   ${clearSpace}
@@ -44,14 +31,19 @@ const StepDescription = styled('h5')`
 
 // Component
 const BaseStep: IStep = ({ active, stepTracker, stepDescription, className }) => (
-  <StepRoot active={active} className={className}>
+  <div className={className}>
     <StepTracker active={active}>{stepTracker}</StepTracker>
     <StepDescription active={active}>{stepDescription}</StepDescription>
-  </StepRoot>
+  </div>
 );
 
 const Step = styled(BaseStep)`
   ${width}
+  ${activeBorderColor} border-width: 0;
+  border-style: none;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  padding: 0 0 12px 44px;
 `;
 
 export default Step;
