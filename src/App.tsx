@@ -11,6 +11,7 @@ import Converter, {
   IActiveFieldTrackerRenderProp
 } from './components/Converter';
 import { space } from 'styled-system';
+import Button from './components/Button';
 
 const InnerContainer = styled('div')`
   ${space};
@@ -33,6 +34,10 @@ const renderFields: IActiveFieldTrackerRenderProp = (isActive, makeActive) => (
   </>
 );
 
+const ButtonRow = styled('div')`
+  ${space}
+`;
+
 const App = () => (
   <ThemeProvider theme={theme}>
     <div>
@@ -40,9 +45,12 @@ const App = () => (
       <InnerContainer mt="54px" mx="288px">
         <NavBar width={`${188 * 3}px`} mb="39px" />
         <Instructions mb="27px" />
-        <Converter active={true} width="564px">
+        <Converter active={true} width="564px" mb="36px">
           <ActiveFieldTracker defaultKey="field_1" render={renderFields} />
         </Converter>
+        <ButtonRow >
+          <Button>Next</Button>
+        </ButtonRow>
       </InnerContainer>
     </div>
   </ThemeProvider>

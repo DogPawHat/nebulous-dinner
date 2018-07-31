@@ -1,5 +1,5 @@
 import React, { SFC, Attributes } from 'react';
-import { width } from 'styled-system';
+import { width, space } from 'styled-system';
 
 import Field from './Field';
 import ActiveFieldTracker, {IActiveFieldTrackerRenderProp} from './ActiveFieldTracker';
@@ -8,6 +8,7 @@ import styled from '../../themeStyled';
 
 interface IConverterProps extends Attributes {
   width?: any;
+  mb?: any;
   className?: string;
   active: boolean;
 }
@@ -20,6 +21,7 @@ const BaseConverter: IConverter = ({ className, children }) => (
 
 const Converter = styled(BaseConverter)`
   ${width}
+  ${space}
   transform-style: preserve-3d;
   > * {
     z-index: 1;
