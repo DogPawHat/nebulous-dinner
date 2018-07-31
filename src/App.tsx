@@ -42,14 +42,14 @@ const ButtonRow = styled('div')`
 const App = () => (
   <ThemeProvider theme={theme}>
     <div>
-      <SiteHeader width={1} px="288px" currentStep="step_1"/>
+      <SiteHeader width={1} px="288px" />
       <InnerContainer mt="54px" mx="288px">
-        <NavBar width={`${188 * 3}px`} mb="39px" />
+        <NavBar currentStep="step_1" width={`${188 * 3}px`} mb="39px" />
         <Instructions mb="27px" />
         <Converter active={true} width="564px" mb="36px">
           <ActiveFieldTracker defaultKey="field_1" render={renderFields} />
         </Converter>
-        <ButtonRow >
+        <ButtonRow mb="60px">
           <Button>Next</Button>
         </ButtonRow>
         <Footer />

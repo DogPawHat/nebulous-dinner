@@ -7,7 +7,7 @@ const Button = styled('button')`
   font-size: ${props => props.theme.fontSizes.medium};
   font-weight: ${props => props.theme.fontWeights.medium};
   background-color: #6ec0e6;
-  padding: 18px 15px 18px 13px;
+  padding: 15px 18px 13px;
   line-height: 19px;
 `;
 

@@ -4,6 +4,8 @@ import { ThemeProvider } from 'emotion-theming';
 
 import { theme } from '../src/themeStyled';
 
+
+import 'normalize.css';
 import '../src/index.css';
 
 const req = require.context('../src/components', true, /_story\.tsx$/)
