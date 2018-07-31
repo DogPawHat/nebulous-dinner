@@ -12,6 +12,7 @@ import Converter, {
 } from './components/Converter';
 import { space } from 'styled-system';
 import Button from './components/Button';
+import Footer from './components/Footer';
 
 const InnerContainer = styled('div')`
   ${space};
@@ -41,7 +42,7 @@ const ButtonRow = styled('div')`
 const App = () => (
   <ThemeProvider theme={theme}>
     <div>
-      <SiteHeader width={1} px="288px" />
+      <SiteHeader width={1} px="288px" currentStep="step_1"/>
       <InnerContainer mt="54px" mx="288px">
         <NavBar width={`${188 * 3}px`} mb="39px" />
         <Instructions mb="27px" />
@@ -51,6 +52,7 @@ const App = () => (
         <ButtonRow >
           <Button>Next</Button>
         </ButtonRow>
+        <Footer />
       </InnerContainer>
     </div>
   </ThemeProvider>
