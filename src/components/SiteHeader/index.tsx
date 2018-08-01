@@ -1,33 +1,27 @@
-import React, { SFC } from 'react';
-import { width, space } from 'styled-system';
+import React, { SFC, HTMLAttributes } from 'react';
+import styled from 'react-emotion';
 
-import styled from '../../themeStyled';
 import cfLogo from './logo.svg';
+import { colors } from '../../styleUtils';
 
 // Interface
-interface ISiteHeaderProps {
-  className?: string;
-  width: any;
+interface ISiteHeaderProps extends HTMLAttributes<HTMLElement>{
 }
 
 type ISiteHeader = SFC<ISiteHeaderProps>;
 
-// Styled Component
-const Image = styled('img')`
-  height: 100%;
-`;
-
 const BaseSiteHeader: ISiteHeader = ({ className }) => (
   <header className={className} >
-    <Image src={cfLogo} />
+    <img src={cfLogo} />
   </header>
 );
 
 const SiteHeader = styled(BaseSiteHeader)`
-  ${width}
-  ${space}
-  background-color: ${props => props.theme.colors.bg.black};
-  height: 66px;
+  background-color: ${colors.black};
+  height: 4.125rem;
+  img {
+    height: 100%;
+  }
 `;
 
 export default SiteHeader;

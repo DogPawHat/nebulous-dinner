@@ -1,49 +1,52 @@
-import React, { SFC } from 'react';
-import { width, space } from 'styled-system';
+import React, { SFC, HTMLAttributes } from 'react';
 
-import styled from '../../themeStyled';
+import styled from 'react-emotion';
 
 import Step from './Step';
 
 // Interface
-interface INavBarProps {
+interface INavBarProps extends HTMLAttributes<HTMLDivElement>{
   className?: string;
   currentStep: 'step_1' | 'step_2' | 'step_3';
 }
 
 type INavBar = SFC<INavBarProps>;
 
-// Main Components
 
-const BaseNavBar: INavBar = ({ className, currentStep }) => (
-  <div className={className}>
+
+// CSS classes
+const stepWidth = 'navBar__Step--width';
+
+const NavBarRoot = styled('div')`
+  display: flex;
+  flex-direction: row;
+  .${stepWidth} {
+    width: ${100/3}%;
+  }
+`;
+
+// Main Components
+const NavBar: INavBar = ({ className, currentStep }) => (
+  <NavBarRoot className={className}>
     <Step
       active={currentStep === 'step_1'}
-      width={1 / 3}
+      className={stepWidth}
       stepTracker="Step 1"
       stepDescription="Transaction Info"
     />
     <Step
       active={currentStep === 'step_2'}
-      width={1 / 3}
+      className={stepWidth}
       stepTracker="Step 2"
       stepDescription="Recipient info"
     />
     <Step
       active={currentStep === 'step_3'}
-      width={1 / 3}
+      className={stepWidth}
       stepTracker="Step 3"
       stepDescription="Make payment"
     />
-  </div>
+  </NavBarRoot>
 );
-
-// Style Main Component
-const NavBar = styled(BaseNavBar)`
-  ${width}
-  ${space}
-  display: flex;
-  flex-direction: row;
-`;
 
 export default NavBar;

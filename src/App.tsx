@@ -1,7 +1,6 @@
 import React from 'react';
-import { ThemeProvider } from 'emotion-theming';
+import styled, { css } from 'react-emotion';
 
-import styled, { theme } from './themeStyled';
 import SiteHeader from './components/SiteHeader';
 import NavBar from './components/NavBar';
 import Instructions from './components/Instructions';
@@ -10,13 +9,9 @@ import Converter, {
   ActiveFieldTracker,
   IActiveFieldTrackerRenderProp
 } from './components/Converter';
-import { space } from 'styled-system';
 import Button from './components/Button';
 import Footer from './components/Footer';
 
-const InnerContainer = styled('div')`
-  ${space};
-`;
 
 const renderFields: IActiveFieldTrackerRenderProp = (isActive, makeActive) => (
   <>
@@ -35,27 +30,51 @@ const renderFields: IActiveFieldTrackerRenderProp = (isActive, makeActive) => (
   </>
 );
 
+const width = css`
+  width: 35.25rem;
+`;
+
+const headerPadding = css`
+  padding: 0 16rem;
+`;
+
+const containerMargin = css`
+  margin: 3.375rem 16rem 0;
+`;
+
+const navBarMargin = css`
+  ${width}
+  margin-bottom: 2.4375rem;
+`;
+
+const instructionsMb = css`
+  margin-bottom: 1.6875rem;
+`;
+
+const converterWidthMb = css`
+  ${width}
+  margin-bottom: 2.25rem;
+`
+
 const ButtonRow = styled('div')`
-  ${space}
+  margin-bottom: 3.75rem;
 `;
 
 const App = () => (
-  <ThemeProvider theme={theme}>
     <div>
-      <SiteHeader width={1} px="288px" />
-      <InnerContainer mt="54px" mx="288px">
-        <NavBar currentStep="step_1" width={`${188 * 3}px`} mb="39px" />
-        <Instructions mb="27px" />
-        <Converter active={true} width="564px" mb="36px">
+      <SiteHeader className={headerPadding} />
+      <div className={containerMargin}>
+        <NavBar currentStep="step_1" className={navBarMargin} />
+        <Instructions className={instructionsMb} />
+        <Converter className={converterWidthMb}>
           <ActiveFieldTracker defaultKey="field_1" render={renderFields} />
         </Converter>
-        <ButtonRow mb="60px">
+        <ButtonRow>
           <Button>Next</Button>
         </ButtonRow>
-        <Footer />
-      </InnerContainer>
+        <Footer className={width}/>
+      </div>
     </div>
-  </ThemeProvider>
 );
 
 export default App;

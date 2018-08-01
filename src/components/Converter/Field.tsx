@@ -1,8 +1,9 @@
 import React, { SFC, HTMLAttributes } from 'react';
-
-import styled, {
-  activeColor, activeBg, activeBorderColor
-} from '../../themeStyled';
+import styled, { css } from 'react-emotion';
+import { fontSizes, fontWeights, colors } from 'src/styleUtils';
+import color from 'color';
+import InputMasker, { IInputMaskerRenderProp } from './InputMasker';
+import Input from './Input';
 
 // Interfaces
 export interface IConverterFieldProps extends HTMLAttributes<HTMLDivElement> {
@@ -11,54 +12,62 @@ export interface IConverterFieldProps extends HTMLAttributes<HTMLDivElement> {
   position?: 'top' | 'bottom';
 }
 
+interface IConverterFieldRootProps {
+  active: boolean;
+}
+
 type IConverterField = SFC<IConverterFieldProps>;
 
+// CSS classes
+const activeBg = ({ active }: IConverterFieldRootProps) => css`
+  background-color: ${active
+    ? color(colors.blue)
+        .alpha(0.3)
+        .string()
+    : colors.white};
+`;
+
+const activeColor = ({ active }: IConverterFieldRootProps) => css`
+  color: ${active ? colors.blue : colors.grey};
+`;
+
+const activeTransform = ({ active }: IConverterFieldRootProps) => css`
+  color: ${active ? colors.blue : colors.grey};
+`;
+
+const activeBorderColor = ({ active }: IConverterFieldRootProps) => css`
+  transform: ${active ? 'translateZ(5px)' : 'translateZ(0)'};
+`;
+
+const descriptionClassName = 'Converter__description';
 
 // Styled Components
-const ConverterDescription = styled('p')`
-  ${activeColor}
-  font-size: ${props => props.theme.fontSizes.body};
-  font-weight: ${props => props.theme.fontWeights.medium};
-  padding: 0;
-  margin: 0;
-  text-transform: uppercase;
-  line-height: 38px;
-`;
-
-const ConverterInput = styled('p')`
-  font-size: ${props => props.theme.fontSizes.large};
-  font-weight: ${props => props.theme.fontWeights.medium};
-  color: ${props => props.theme.colors.text.black};
-  padding: 0;
-  margin: 0;
-  border: none;
-  background: transparent;
-  line-height: 38px;
-`;
-
-const ConvertStrong = styled('strong')`
-  font-size: ${props => props.theme.fontSizes.huge};
-`;
-
-// Base Component
-const BaseField: IConverterField = ({ description, active, ...otherProps }) => (
-  <div {...otherProps}>
-    <ConverterDescription active={active}>{description}</ConverterDescription>
-    <ConverterInput>
-      <ConvertStrong>€ 2,000</ConvertStrong>.00
-    </ConverterInput>
-  </div>
-);
-
-// Style Base Component
-const Field = styled(BaseField)`
-  ${activeBg}
-  ${activeBorderColor}
+const FieldRoot = styled('div')`
+  ${activeBg} ${activeBorderColor} ${activeTransform}
   padding: 0 24px;
   border-width: 1px;
   border-style: solid;
-  transform: ${props => props.active ? 'translateZ(5px)' : 'translateZ(0)'};
+  .${descriptionClassName} { 
+    line-height: 2.375rem;
+    font-weight: ${fontWeights.medium};
+    ${activeColor}
+    font-size: ${fontSizes.body};
+    text-transform: uppercase;
+    line-height: 38px;
+  }
 `;
 
+
+const maskerRenderProp: IInputMaskerRenderProp = (value, onChange) => (
+  <Input value={value} onChange={onChange} />
+)
+
+// Main
+const Field: IConverterField = ({ description, ...otherProps }) => (
+  <FieldRoot {...otherProps}>
+    <p className={descriptionClassName}>{description}</p>
+    <InputMasker defaultValue={2000} render={maskerRenderProp} />
+  </FieldRoot>
+);
 
 export default Field;

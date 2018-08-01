@@ -1,27 +1,12 @@
-import React, { SFC, Attributes } from 'react';
-import { width, space } from 'styled-system';
+
+import styled from 'react-emotion'
 
 import Field from './Field';
-import ActiveFieldTracker, {IActiveFieldTrackerRenderProp} from './ActiveFieldTracker';
+import ActiveFieldTracker, {
+  IActiveFieldTrackerRenderProp
+} from './ActiveFieldTracker';
 
-import styled from '../../themeStyled';
-
-interface IConverterProps extends Attributes {
-  width?: any;
-  mb?: any;
-  className?: string;
-  active: boolean;
-}
-
-type IConverter = SFC<IConverterProps>;
-
-const BaseConverter: IConverter = ({ className, children }) => (
-  <div className={className}>{children}</div>
-);
-
-const Converter = styled(BaseConverter)`
-  ${width}
-  ${space}
+const Converter = styled('div')`
   transform-style: preserve-3d;
   > * {
     z-index: 1;

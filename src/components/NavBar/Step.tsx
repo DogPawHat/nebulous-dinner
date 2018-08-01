@@ -1,49 +1,63 @@
 import React, { SFC } from 'react';
-import { width } from 'styled-system';
-
-import styled, {activeColor, activeBorderColor, clearSpace} from '../../themeStyled';
+import styled, { Interpolation, css } from 'react-emotion';
+import color from 'color';
+import { fontSizes, fontWeights, colors } from '../../styleUtils';
 
 // Interfaces
 interface IStepProps {
-  width?: any;
   active: boolean;
   stepTracker: string;
   stepDescription: string;
   className?: string;
 }
 
+interface IStepRootProps {
+  active: boolean;
+}
+
 type IStep = SFC<IStepProps>;
 
-// Styled Components
-const StepTracker = styled('h6')`
-  ${activeColor}
-  ${clearSpace}
-  font-size: ${props => props.theme.fontSizes.small};
-  font-weight: ${props => props.theme.fontWeights.medium};
+// CSS Interpolations
+const activeColor: Interpolation<IStepRootProps> = ({ active }) => css`
+  color: ${active ? colors.blue : colors.grey};
 `;
 
-const StepDescription = styled('h5')`
-  ${activeColor}
-  ${clearSpace}
-  font-size: ${props => props.theme.fontSizes.body};
-  font-weight: ${props => props.theme.fontWeights.medium};
+const activeBorderOpacity: Interpolation<IStepRootProps> = ({ active }) => css`
+  border-bottom-color: ${active
+    ? colors.blue
+    : color(colors.blue)
+        .alpha(0.2)
+        .string()};
+`;
+
+// Styled Component Root
+const stepTrackerClassName = 'Step__tracker';
+const stepDescriptionClassName = 'Step__description';
+
+const StepRoot = styled('div')`
+  border-style: none;
+  border-bottom-style: solid;
+  border-bottom-width: 0.25rem;
+  padding: 0 0 0.75rem 2.75rem;
+  ${activeBorderOpacity}
+  .${stepTrackerClassName}, .${stepDescriptionClassName} {
+    ${activeColor}
+    font-weight: ${fontWeights.medium}
+  }
+  .${stepTrackerClassName} {
+    font-size: ${fontSizes.body}
+  }
+  .${stepDescriptionClassName} {
+    font-size: ${fontSizes.small};
+  }
 `;
 
 // Component
-const BaseStep: IStep = ({ active, stepTracker, stepDescription, className }) => (
-  <div className={className}>
-    <StepTracker active={active}>{stepTracker}</StepTracker>
-    <StepDescription active={active}>{stepDescription}</StepDescription>
-  </div>
+const Step: IStep = ({ active, stepTracker, stepDescription, className }) => (
+  <StepRoot className={className} active={active}>
+    <h6 className={stepTrackerClassName}>{stepTracker}</h6>
+    <h5 className={stepTrackerClassName}>{stepDescription}</h5>
+  </StepRoot>
 );
-
-const Step = styled(BaseStep)`
-  ${width}
-  ${activeBorderColor} border-width: 0;
-  border-style: none;
-  border-bottom-style: solid;
-  border-bottom-width: 4px;
-  padding: 0 0 12px 44px;
-`;
 
 export default Step;

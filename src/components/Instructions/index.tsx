@@ -1,7 +1,7 @@
 import React, { SFC } from 'react';
-import { space } from 'styled-system';
 
-import styled from '../../themeStyled';
+import styled from 'react-emotion';
+import { colors, fontWeights, fontSizes } from '../../styleUtils';
 
 // Interfaces
 interface IInstructionsProps {
@@ -11,33 +11,32 @@ interface IInstructionsProps {
 type IInstruction = SFC<IInstructionsProps>
 
 // Styled Components
-const InstructionsHeading = styled('h3')`
-  font-weight: ${props => props.theme.fontWeights.medium};
-  font-size: ${props => props.theme.fontSizes.large};
-  color: ${props => props.theme.colors.text.black};
-  margin-top: 0;
-`;
+const instructionsHeadingClassName = 'Instructions__heading';
+const instructionsDescriptionClassName = 'Instructions__description';
 
-const InstructionsDescription = styled('p')`
-  font-weight: ${props => props.theme.fontWeights.book};
-  font-size: ${props => props.theme.fontSizes.body};
-  color: ${props => props.theme.colors.text.darkgrey};
-  margin-bottom: 0;
+const RootInstructions = styled('div')`
+  .${instructionsHeadingClassName} {
+    font-weight: ${fontWeights.medium};
+    font-size: ${fontSizes.large};
+    color: ${colors.lightblack};
+  }
+  .${instructionsDescriptionClassName} {
+    font-weight: ${fontWeights.book};
+    font-size: ${fontSizes.body};
+    color: ${colors.darkgrey};
+  }
 `;
-
 
 // Main Component
-const BaseInstructions: IInstruction = ({ className }) => (
-  <div className={className}>
-    <InstructionsHeading>Let's set up your transaction!</InstructionsHeading>
-    <InstructionsDescription>
+const Instructions: IInstruction = ({ className }) => (
+  <RootInstructions className={className}>
+    <h3 className={instructionsHeadingClassName}>
+      Let's set up your transaction!
+    </h3>
+    <p className={instructionsDescriptionClassName}>
       Specify the amount to be sent or received
-    </InstructionsDescription>
-  </div>
+    </p>
+  </RootInstructions>
 );
-
-const Instructions = styled(BaseInstructions)`
-  ${space}
-`;
 
 export default Instructions
