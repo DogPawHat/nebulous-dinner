@@ -1,8 +1,8 @@
-import { withInfo } from '@storybook/addon-info';
-import { storiesOf } from '@storybook/react';
+import { withInfo } from 'storybook__addon-info';
+import { storiesOf } from 'storybook__react';
 import React from 'react';
 
-import { Field } from './index';
+import { Field } from '.';
 
 const stories = storiesOf('ConverterField', module)
 

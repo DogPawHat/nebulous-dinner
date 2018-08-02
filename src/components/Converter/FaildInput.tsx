@@ -2,8 +2,8 @@ import React, {
   Component,
   ChangeEventHandler
 } from 'react';
-import styled, {css} from 'react-emotion';
-import { fontSizes, fontWeights, colors } from 'src/styleUtils';
+import styled from 'react-emotion';
+import { fontSizes, fontWeights, colors } from '../../styleUtils';
 
 interface IInputProps {
   value?: string;
@@ -19,6 +19,7 @@ const InputRoot = styled('div')`
   display: flex;
   flex-flow: row nowrap;
   align-items: baseline;
+  height: 2.375rem;
   .${intergerInputClassName}, .${decimalInputClassName}, .${dotClassName} {
     font-weight: ${fontWeights.medium};
     font-size: ${fontSizes.large};
@@ -43,10 +44,6 @@ const smallFigureRegx = /\d\d$/;
 const wholeFigureRegX = /^([£€].?[1-9][\d,]*)\.(\d\d)$/;
 
 const checkValue = (value: string) => wholeFigureRegX.test(value);
-
-const inputWidth = (st?: string) => css`
-  width: ${st? st.length : 1}ch;
-`;
 
 class Input extends Component<IInputProps> {
   get integerValue() {
@@ -100,17 +97,17 @@ class Input extends Component<IInputProps> {
   public render() {
     return (
       <InputRoot>
-        <input
-          value={this.integerValue}
-          onChange={this.onIntegerValueChange}
-          className={`${intergerInputClassName} ${inputWidth(this.integerValue)}`}
-        />
+        <span
+          contentEditable={true}
+          onInput={this.onIntegerValueChange}
+          className={intergerInputClassName}
+        >{this.integerValue}</span>
         <span className={dotClassName}>.</span>
-        <input
-          value={this.decimalValue}
-          onChange={this.onDecimalValueChange}
-          className={`${decimalInputClassName} ${inputWidth(this.decimalValue)}`}
-        />
+        <span
+          contentEditable={true}
+          onInput={this.onDecimalValueChange}
+          className={decimalInputClassName}
+        >{this.decimalValue}</span>
       </InputRoot>
     );
   }

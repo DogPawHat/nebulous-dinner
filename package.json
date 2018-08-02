@@ -16,9 +16,11 @@
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.6",
     "react-scripts-ts": "2.16.0",
+    "react-text-mask": "^5.4.3",
     "recompose": "^0.27.1",
     "sanctuary": "^0.15.0",
-    "styled-system": "^3.0.2"
+    "styled-system": "^3.0.2",
+    "text-mask-addons": "^3.8.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -34,6 +36,7 @@
     "@types/node": "^10.5.4",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
+    "@types/react-text-mask": "^5.4.0",
     "@types/recompose": "^0.26.2",
     "@types/storybook__addon-info": "^3.2.3",
     "@types/storybook__react": "^3.0.8",

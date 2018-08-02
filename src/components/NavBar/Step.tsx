@@ -42,7 +42,8 @@ const StepRoot = styled('div')`
   ${activeBorderOpacity}
   .${stepTrackerClassName}, .${stepDescriptionClassName} {
     ${activeColor}
-    font-weight: ${fontWeights.medium}
+    font-weight: ${fontWeights.medium};
+    line-height: 1.313rem;
   }
   .${stepTrackerClassName} {
     font-size: ${fontSizes.body}

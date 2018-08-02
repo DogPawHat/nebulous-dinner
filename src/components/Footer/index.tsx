@@ -14,39 +14,39 @@ const anchor = 'Footer__anchor';
 const copyright = 'Footer__copyright';
 
 const FooterRoot = styled('footer')`
-  width: 564px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: baseline;
   border-top: 1px solid #eeeeee;
+  padding-top: 0.875rem;
 
-  p.${copyright}, nav.${linkbar} a.${anchor} {
+  .${copyright}, .${linkbar} .${anchor} {
     font-size: ${fontSizes.small};
     font-weight: ${fontWeights.medium};
   }
 
-  p.${copyright} {
+  .${copyright} {
     color: ${colors.grey};
   }
 
-  nav.${linkbar} {
+  .${linkbar} {
     display: flex;
     justify-content: space-between;
     flex: 0 1 157px;
   }
 
-  nav.${linkbar} a.${anchor} {
+  .${anchor} {
     color: ${colors.blue};
   }
 `;
 
 const Footer: IFooter = ({...otherProps}) => (
   <FooterRoot {...otherProps}>
-    <p className='copyright'>© 2016 CurrencyFair</p>
-    <nav className='linkbar'>
-      <a>Help & Support</a>
-      <a>Legal Stuff</a>
+    <p className={copyright}>© 2016 CurrencyFair</p>
+    <nav className={linkbar}>
+      <a className={anchor}>Help & Support</a>
+      <a className={anchor}>Legal Stuff</a>
     </nav>
   </FooterRoot>
 );
