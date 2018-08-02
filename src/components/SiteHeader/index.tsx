@@ -10,18 +10,20 @@ interface ISiteHeaderProps extends HTMLAttributes<HTMLElement>{
 
 type ISiteHeader = SFC<ISiteHeaderProps>;
 
-const BaseSiteHeader: ISiteHeader = ({ className }) => (
-  <header className={className} >
-    <img src={cfLogo} />
-  </header>
-);
+const imgClassName = 'SiteHeader__image';
 
-const SiteHeader = styled(BaseSiteHeader)`
+const SiteHeaderRoot = styled('header')`
   background-color: ${colors.black};
   height: 4.125rem;
-  img {
+  .${imgClassName} {
     height: 100%;
   }
 `;
+
+const SiteHeader: ISiteHeader = ({ className }) => (
+  <SiteHeaderRoot className={className} >
+    <img className={imgClassName} src={cfLogo} />
+  </SiteHeaderRoot>
+);
 
 export default SiteHeader;

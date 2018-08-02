@@ -11,6 +11,7 @@ import Converter, {
 } from './components/Converter';
 import Button from './components/Button';
 import Footer from './components/Footer';
+import { colors } from './styleUtils';
 
 
 const renderFields: IActiveFieldTrackerRenderProp = (isActive, makeActive) => (
@@ -30,51 +31,81 @@ const renderFields: IActiveFieldTrackerRenderProp = (isActive, makeActive) => (
   </>
 );
 
-const width = css`
-  width: 35.25rem;
+
+
+
+const headerContainerClassName = 'App__header_container';
+const headerClassName = 'App__header';
+const mainContainerClassName = 'App__main_container';
+const navBarClassName = 'App__navbar';
+const instructionClassName = 'App__instructions';
+const converterClassName = 'App__converter';
+const buttonRowClassName = 'App__button';
+const footerClassName = 'App__footer';
+
+const containerChildWidth = css`
+  width: 100%;
 `;
 
-const headerPadding = css`
-  padding: 0 16rem;
+const containerPadding = css`
+  padding: 0 1.5rem;
 `;
 
-const containerMargin = css`
-  margin: 3.375rem 16rem 0;
-`;
-
-const navBarMargin = css`
-  ${width}
-  margin-bottom: 2.4375rem;
-`;
-
-const instructionsMb = css`
-  margin-bottom: 1.6875rem;
-`;
-
-const converterWidthMb = css`
-  ${width}
-  margin-bottom: 2.25rem;
-`
-
-const ButtonRow = styled('div')`
-  margin-bottom: 3.75rem;
+const AppRoot = styled('div')`
+  .${headerContainerClassName} {
+    background-color: ${colors.black};
+    width: 100%;
+  }
+  .${headerClassName} {
+    ${containerPadding}
+    width: 100%;
+    max-width: 35.25rem;
+    margin: 0 auto;
+  }
+  .${mainContainerClassName} {
+    ${containerPadding}
+    width: 100%;
+    max-width: 35.25rem;
+    margin: 3.375rem auto 0;
+  }
+  .${navBarClassName} {
+    ${containerChildWidth}
+    margin-bottom: 2.4375rem;
+  };
+  .${instructionClassName} {
+    ${containerChildWidth}
+    margin-bottom: 1.6875rem;
+  }
+  .${converterClassName} {
+    ${containerChildWidth}
+    margin-bottom: 2.25rem;
+  }
+  .${buttonRowClassName} {
+    ${containerChildWidth}
+    margin-bottom: 3.75rem;
+  }
+  .${footerClassName} {
+    ${containerChildWidth}
+  }
 `;
 
 const App = () => (
-    <div>
-      <SiteHeader className={headerPadding} />
-      <div className={containerMargin}>
-        <NavBar currentStep="step_1" className={navBarMargin} />
-        <Instructions className={instructionsMb} />
-        <Converter className={converterWidthMb}>
+    <AppRoot>
+      <div className={headerContainerClassName} >
+        <SiteHeader className={headerClassName} />
+      </div>
+      <div className={mainContainerClassName}>
+        <NavBar currentStep="step_1" className={navBarClassName} />
+        <Instructions className={instructionClassName} />
+        <Converter className={converterClassName}>
           <ActiveFieldTracker defaultKey="field_1" render={renderFields} />
         </Converter>
-        <ButtonRow>
+        <div className={buttonRowClassName}>
           <Button>Next</Button>
-        </ButtonRow>
-        <Footer className={width}/>
+        </div>
+        <Footer className={footerClassName}/>
       </div>
-    </div>
+    </AppRoot>
 );
 
 export default App;
