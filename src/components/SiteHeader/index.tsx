@@ -14,7 +14,7 @@ const imgClassName = 'SiteHeader__image';
 
 const SiteHeaderRoot = styled('header')`
   background-color: ${colors.black};
-  height: 4.125rem;
+  height: 4.15rem;
   .${imgClassName} {
     height: 100%;
   }
