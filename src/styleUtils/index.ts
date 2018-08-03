@@ -21,3 +21,9 @@ export const colors = {
   black: '#32323c',
   white: '#FFFFFF'
 };
+
+export const breakpoints = {
+  small: '@media(min-width: 420px)',
+  medium: '@media(min-width: 920px)',
+  large: '@media(min-width: 1120px)',
+};
