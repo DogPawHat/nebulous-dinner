@@ -1,29 +1,45 @@
-
-import styled from 'react-emotion'
-
+import React, {SFC} from 'react';
+import ConverterContainer, {
+  ConverterContainerChild,
+} from './ConverterContainer';
 import Field from './Field';
 import ActiveFieldTracker, {
   IActiveFieldTrackerRenderProp
 } from './ActiveFieldTracker';
+import styled from 'react-emotion';
 
-const Converter = styled('div')`
-  transform-style: preserve-3d;
-  > * {
-    z-index: 1;
-  }
-  > :first-child {
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-  }
-  > :last-child {
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-  }
-  > :not(:first-child) {
-    transform: translateY(-1px)
-  }
+interface IConverterProps {
+  className?: string
+}
+
+type IConverter = SFC<IConverterProps>;
+
+const FieldChild = styled(Field)`
+  ${ConverterContainerChild}
 `;
 
-export { Field, ActiveFieldTracker, IActiveFieldTrackerRenderProp };
+// Render prop for converter
+const renderFields: IActiveFieldTrackerRenderProp = (isActive, makeActive) => (
+  <>
+    <FieldChild
+      key="field_1"
+      active={isActive('field_1')}
+      onClick={makeActive('field_1')}
+      description="you send"
+    />
+    <FieldChild
+      key="field_2"
+      active={isActive('field_2')}
+      onClick={makeActive('field_2')}
+      description="reciver gets"
+    />
+  </>
+);
+
+const Converter: IConverter = ({className}) => (
+  <ConverterContainer className={className}>
+    <ActiveFieldTracker defaultKey="field_1" render={renderFields} />
+  </ConverterContainer>
+);
 
 export default Converter;

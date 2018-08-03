@@ -2,7 +2,7 @@ import { withInfo } from 'storybook__addon-info';
 import { storiesOf } from 'storybook__react';
 import React from 'react';
 
-import { Field } from '.';
+import Field from './Field';
 
 const stories = storiesOf('ConverterField', module)
 

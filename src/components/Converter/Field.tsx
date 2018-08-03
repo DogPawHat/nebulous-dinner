@@ -10,6 +10,7 @@ export interface IConverterFieldProps extends HTMLAttributes<HTMLDivElement> {
   description: string;
   active: boolean;
   position?: 'top' | 'bottom';
+  className?: string;
 }
 
 interface IConverterFieldRootProps {
@@ -31,12 +32,8 @@ const activeColor = ({ active }: IConverterFieldRootProps) => css`
   color: ${active ? colors.blue : colors.grey};
 `;
 
-const activeTransform = ({ active }: IConverterFieldRootProps) => css`
-  color: ${active ? colors.blue : colors.grey};
-`;
-
 const activeBorderColor = ({ active }: IConverterFieldRootProps) => css`
-  transform: ${active ? 'translateZ(5px)' : 'translateZ(0)'};
+  color: ${active ? colors.blue : colors.grey};
 `;
 
 const descriptionClassName = 'Converter__description';
@@ -44,7 +41,7 @@ const inputClassName = 'Converter__input';
 
 // Styled Components
 const FieldRoot = styled('div')`
-  ${activeBg} ${activeBorderColor} ${activeTransform}
+  ${activeBg} ${activeBorderColor}
   padding: 0.125rem 1.5rem 0.375rem;
   border-width: 0.063rem;
   border-style: solid;
