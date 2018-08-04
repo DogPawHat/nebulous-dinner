@@ -3,7 +3,7 @@ import styled, { css } from 'react-emotion';
 import { fontSizes, fontWeights, colors } from '../../styleUtils';
 import color from 'color';
 import MaskedInput from 'react-text-mask';
-import { createNumberMask } from 'text-mask-addons';
+import { createNumberMask } from 'text-mask-addons/dist/textMaskAddons';
 
 // Interfaces
 export interface IConverterFieldProps extends HTMLAttributes<HTMLDivElement> {

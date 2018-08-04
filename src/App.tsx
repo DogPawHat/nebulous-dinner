@@ -16,7 +16,7 @@ import {
   mainGridChild,
   secondaryGridChild
 } from './grids';
-import Details from 'src/components/Details';
+import Details from './components/Details';
 
 
 // CSS Class Names

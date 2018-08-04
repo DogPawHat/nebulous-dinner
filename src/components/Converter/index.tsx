@@ -1,12 +1,13 @@
 import React, {SFC} from 'react';
-import ConverterContainer, {
-  ConverterContainerChild,
-} from './ConverterContainer';
+import {
+  converterContainerClassName,
+  converterContainerChildClassName,
+} from './converterContainer';
 import Field from './Field';
 import ActiveFieldTracker, {
   IActiveFieldTrackerRenderProp
 } from './ActiveFieldTracker';
-import styled from 'react-emotion';
+import styled, { cx } from 'react-emotion';
 
 interface IConverterProps {
   className?: string
@@ -15,7 +16,7 @@ interface IConverterProps {
 type IConverter = SFC<IConverterProps>;
 
 const FieldChild = styled(Field)`
-  ${ConverterContainerChild}
+  ${converterContainerChildClassName}
 `;
 
 // Render prop for converter
@@ -37,9 +38,9 @@ const renderFields: IActiveFieldTrackerRenderProp = (isActive, makeActive) => (
 );
 
 const Converter: IConverter = ({className}) => (
-  <ConverterContainer className={className}>
+  <div className={cx(className, converterContainerClassName)}>
     <ActiveFieldTracker defaultKey="field_1" render={renderFields} />
-  </ConverterContainer>
+  </div>
 );
 
 export default Converter;

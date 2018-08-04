@@ -15,3 +15,4 @@ Problems faced so far:
 - I had some issues with the fonts (Post Grotesk) importing into `create-react-app` and Avocode, had to do some trial and error before finding the right solution
 - Had to do some heavy editing of the Webpack file for storybook due to it not loading the svg logo proberly when `create-react-app` didn't have issues.
   - I'm using an alpha version of `@storybook/react` which has updated its default svg loader to something a bit more unreiliable.
+- 
