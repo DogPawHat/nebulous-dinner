@@ -24,12 +24,14 @@ const renderFields: IActiveFieldTrackerRenderProp = (isActive, makeActive) => (
   <>
     <FieldChild
       key="field_1"
+      currency='EUR'
       active={isActive('field_1')}
       onClick={makeActive('field_1')}
       description="you send"
     />
     <FieldChild
       key="field_2"
+      currency='GBP'
       active={isActive('field_2')}
       onClick={makeActive('field_2')}
       description="reciver gets"

@@ -9,6 +9,7 @@ import { createNumberMask } from 'text-mask-addons/dist/textMaskAddons';
 export interface IConverterFieldProps extends HTMLAttributes<HTMLDivElement> {
   description: string;
   active: boolean;
+  currency: 'EUR' | 'GBP';
   position?: 'top' | 'bottom';
   className?: string;
 }
@@ -62,9 +63,14 @@ const FieldRoot = styled('div')`
   }
 `;
 
-const myMask = (rawValue: string) => {
+const prefixes = {
+  'EUR': '€ ',
+  'GBP': '£ '
+};
+
+const myMask = (currency: 'EUR'| 'GBP') => (rawValue: string) => {
   const numberMask = createNumberMask({
-      prefix: '$',
+      prefix: prefixes[currency],
       includeThousandsSeparator: true,
       allowDecimal: true,
       requireDecimal: true,
@@ -86,12 +92,12 @@ const myMask = (rawValue: string) => {
 };
 
 // Main
-const Field: IConverterField = ({ description, ...otherProps }) => (
+const Field: IConverterField = ({ description, currency, ...otherProps }) => (
   <FieldRoot {...otherProps}>
     <p className={descriptionClassName}>{description}</p>
     <MaskedInput
       value="$2000.00"
-      mask={myMask}
+      mask={myMask(currency)}
       placeholder="$2000.00"
       className={inputClassName}
     />
