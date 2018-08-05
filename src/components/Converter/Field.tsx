@@ -11,6 +11,7 @@ export interface IConverterFieldProps extends HTMLAttributes<HTMLDivElement> {
   description: string;
   active: boolean;
   value: string;
+  updateValue: (newValue: string) => void;
   currency: 'EUR' | 'GBP';
   position?: 'top' | 'bottom';
   className?: string;
@@ -98,12 +99,16 @@ const Field: IConverterField = ({
   description,
   value,
   currency,
+  updateValue,
   ...otherProps
 }) => (
-  <FieldRoot {...otherProps}>
+  <FieldRoot
+    {...otherProps}>
     <p className={descriptionClassName}>{description}</p>
     <MaskedInput
+      data-testid={`input_${currency}`}
       value={value}
+      onChange={event => updateValue(event.target.value)}
       mask={myMask(currency)}
       className={inputClassName}
     />

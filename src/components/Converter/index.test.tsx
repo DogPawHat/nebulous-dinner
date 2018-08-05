@@ -1,23 +1,294 @@
-
-import React from 'react'
-import {render, cleanup} from 'react-testing-library'
+import React from 'react';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 // this add custom jest matchers from jest-dom
-import 'jest-dom/extend-expect'
+import 'jest-dom/extend-expect';
 
 import Converter from '.';
 
 // automatically unmount and cleanup DOM after the test is finished.
-afterEach(cleanup)
+afterEach(cleanup);
 
-test('Converter test', () => {
+test('Converter euro to pound', () => {
   // Arrange
-  const {queryByText} = render(<Converter
-    defaultCurrency='EUR'
-    defaultValue={2000}
-    eurToGbpRate={0.86022}
-  />);
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="EUR"
+      defaultValue={2000}
+      eurToGbpRate={0.86022}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
 
   // Assert
-  expect(queryByText('€ 2000.00')).not.toBeNull();
-  expect(queryByText('£ 1,717.94')).not.toBeNull();
+  expect(inputEUR.value).toBe('€ 2,000.00');
+  expect(inputGBP.value).toBe('£ 1,717.94');
+});
+
+test('Converter euro to pound with different value', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="EUR"
+      defaultValue={3000}
+      eurToGbpRate={0.86022}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 3,000.00');
+  expect(inputGBP.value).toBe('£ 2,578.16');
+});
+
+test('Converter euro to pound with different rate', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="EUR"
+      defaultValue={2000}
+      eurToGbpRate={0.89067}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 2,000.00');
+  expect(inputGBP.value).toBe('£ 1,778.84');
+});
+
+test('Converter euro to pound with different fee', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="EUR"
+      defaultValue={2000}
+      eurToGbpRate={0.86022}
+      fee={10}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 2,000.00');
+  expect(inputGBP.value).toBe('£ 1,710.44');
+});
+
+test('Converter pound to euro', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="GBP"
+      defaultValue={2000}
+      eurToGbpRate={0.86022}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 2,322.49');
+  expect(inputGBP.value).toBe('£ 2,000.00');
+});
+
+test('Converter pound to euro with different value', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="GBP"
+      defaultValue={3000}
+      eurToGbpRate={0.86022}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 3,484.98');
+  expect(inputGBP.value).toBe('£ 3,000.00');
+});
+
+test('Converter pound to euro with different rate', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="GBP"
+      defaultValue={2000}
+      eurToGbpRate={0.89067}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 2,243.00');
+  expect(inputGBP.value).toBe('£ 2,000.00');
+});
+
+test('Converter pound to euro with different fee', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="GBP"
+      defaultValue={2000}
+      eurToGbpRate={0.86022}
+      fee={10}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 2,314.99');
+  expect(inputGBP.value).toBe('£ 2,000.00');
+});
+
+test('Converter euro to pound dynamic', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="EUR"
+      defaultValue={2000}
+      eurToGbpRate={0.86022}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Act
+  inputEUR.value = '€ 3,000.00';
+  fireEvent.change(inputEUR);
+
+  // Assert
+  expect(inputGBP.value).toBe('£ 2,578.16');
+});
+
+test('Converter euro to pound dynamic with different fee', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="EUR"
+      defaultValue={2000}
+      eurToGbpRate={0.86022}
+      fee={10}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Act
+  inputEUR.value = '€ 3,000.00';
+  fireEvent.change(inputEUR);
+
+  // Assert
+  expect(inputGBP.value).toBe('£ 2,570.66');
+});
+
+test('Converter euro to pound dynamic with different rate', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="EUR"
+      defaultValue={2000}
+      eurToGbpRate={0.89067}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Act
+  inputEUR.value = '€ 3,000.00';
+  fireEvent.change(inputEUR);
+
+  // Assert
+  expect(inputGBP.value).toBe('£ 2,669.51');
+});
+
+
+test('Converter pound to euro dynamic', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="GBP"
+      defaultValue={2000}
+      eurToGbpRate={0.86022}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Act
+  inputGBP.value = '£ 3,000.00';
+  fireEvent.change(inputGBP);
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 3,484.98');
+});
+
+test('Converter pound to euro dynamic with different fee', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="GBP"
+      defaultValue={2000}
+      eurToGbpRate={0.86022}
+      fee={10}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Act
+  inputGBP.value = '£ 3,000.00';
+  fireEvent.change(inputGBP);
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 3,477.48');
+});
+
+test('Converter pound to euro dynamic with different rate', () => {
+  // Arrange
+  const { getByTestId } = render(
+    <Converter
+      defaultCurrency="GBP"
+      defaultValue={2000}
+      eurToGbpRate={0.89067}
+      fee={2.5}
+    />
+  );
+
+  const inputEUR = getByTestId('input_EUR') as HTMLInputElement;
+  const inputGBP = getByTestId('input_GBP') as HTMLInputElement;
+
+  // Act
+  inputGBP.value = '£ 3,000.00';
+  fireEvent.change(inputGBP);
+
+  // Assert
+  expect(inputEUR.value).toBe('€ 3,365.75');
 });

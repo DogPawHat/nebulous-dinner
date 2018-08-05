@@ -1,4 +1,4 @@
-import { configure, addDecorator } from '@storybook/react';
+import { configure } from '@storybook/react';
 
 import 'normalize.css';
 import '../src/index.css';

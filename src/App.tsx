@@ -62,6 +62,8 @@ const App = () => (
         <Converter
           defaultCurrency="EUR"
           defaultValue={2000}
+          eurToGbpRate={0.86022}
+          fee={2.50}
           className={converterClassName}
         />
         <div className={buttonRowClassName}>

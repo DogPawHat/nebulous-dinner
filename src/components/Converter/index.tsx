@@ -19,6 +19,7 @@ interface IConverterProps {
   defaultCurrency: currencyType;
   defaultValue: CurrencyInput;
   eurToGbpRate: number;
+  fee: number;
 }
 
 interface IConverterState {
@@ -35,7 +36,36 @@ const FieldChild = styled(Field)`
   ${converterContainerChildClassName};
 `;
 
+const convertCurrency = (money: CurrencyInput, rate: number) => currency(money).multiply(rate);
+
 class Converter extends Component<IConverterProps, IConverterState> {
+
+  public state = {
+    eurValue: currency(0),
+    gbpValue: currency(0)
+  }
+
+  constructor(props: IConverterProps) {
+    super(props);
+    if(props.defaultCurrency === 'EUR') {
+      const defaultMoney = currency(this.props.defaultValue)
+      this.state = {
+        eurValue: defaultMoney,
+        gbpValue: convertCurrency(defaultMoney, props.eurToGbpRate).subtract(props.fee)
+      }
+      return;
+    }
+
+    if(props.defaultCurrency === 'GBP') {
+      const defaultMoney = currency(this.props.defaultValue)
+      this.state = {
+        eurValue: convertCurrency(defaultMoney, 1 / props.eurToGbpRate).subtract(props.fee),
+        gbpValue: defaultMoney
+      }
+      return;
+    }
+  }
+
   public render() {
     return (
       <div className={cx(this.props.className, converterContainerClassName)}>
@@ -47,6 +77,22 @@ class Converter extends Component<IConverterProps, IConverterState> {
     );
   }
 
+  private updateEurValue = (newValue: string) => {
+    const newMoney = currency(newValue)
+    this.setState({
+      eurValue: newMoney,
+      gbpValue: convertCurrency(newMoney, this.props.eurToGbpRate).subtract(this.props.fee)
+    });
+  }
+
+  private updateGbpValue = (newValue: string) => {
+    const newMoney = currency(newValue)
+    this.setState({
+      eurValue: convertCurrency(newMoney, 1 / this.props.eurToGbpRate).subtract(this.props.fee),
+      gbpValue: newMoney
+    });
+  }
+
   private renderFields: IActiveFieldTrackerRenderProp = (
     isActive,
     makeActive
@@ -55,13 +101,15 @@ class Converter extends Component<IConverterProps, IConverterState> {
       <FieldChild
         key={fieldKeys.EUR}
         value={this.state.eurValue.format(false)}
+        updateValue={this.updateEurValue}
         currency="EUR"
         active={isActive(fieldKeys.EUR)}
         onClick={makeActive(fieldKeys.EUR)}
         description="you send"
       />
       <FieldChild
-        key="field_2"
+        key={fieldKeys.GBP}
+        updateValue={this.updateGbpValue}
         value={this.state.gbpValue.format(false)}
         currency="GBP"
         active={isActive(fieldKeys.GBP)}

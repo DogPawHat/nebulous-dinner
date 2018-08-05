@@ -10,7 +10,9 @@ const sizeAndMargin = css`
   margin: 3.3rem;
 `;
 
-storiesOf('Details', module).add(
+const DetailsStories = storiesOf('Details', module)
+
+DetailsStories.add(
   'default',
   withInfo({ inline: true })(() => (
     <Details
