@@ -1,0 +1,519 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Converter euro to pound 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="2,000.00"
+      />
+    </div>
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="1,717.94"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter euro to pound dynamic 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="3,000.00"
+      />
+    </div>
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="2,578.16"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter euro to pound dynamic with different fee 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="3,000.00"
+      />
+    </div>
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="2,570.66"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter euro to pound dynamic with different rate 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="3,000.00"
+      />
+    </div>
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="2,669.51"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter euro to pound with different fee 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="2,000.00"
+      />
+    </div>
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="1,710.44"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter euro to pound with different rate 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="2,000.00"
+      />
+    </div>
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="1,778.84"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter euro to pound with different value 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="3,000.00"
+      />
+    </div>
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="2,578.16"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter pound to euro 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="2,322.49"
+      />
+    </div>
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="2,000.00"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter pound to euro dynamic 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="3,484.98"
+      />
+    </div>
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="3,000.00"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter pound to euro dynamic with different fee 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="3,477.48"
+      />
+    </div>
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="3,000.00"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter pound to euro dynamic with different rate 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="3,365.75"
+      />
+    </div>
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="3,000.00"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter pound to euro with different fee 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="2,314.99"
+      />
+    </div>
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="2,000.00"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter pound to euro with different rate 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="2,243.00"
+      />
+    </div>
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="2,000.00"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Converter pound to euro with different value 1`] = `
+<div>
+  <div
+    class="ConverterContainer"
+  >
+    <div
+      class="css-kl0by6"
+    >
+      <p
+        class="Converter__description"
+      >
+        you send
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_EUR"
+        value="3,484.98"
+      />
+    </div>
+    <div
+      class="css-wwdlxm"
+    >
+      <p
+        class="Converter__description"
+      >
+        reciver gets
+      </p>
+      <input
+        class="Converter__input"
+        data-testid="input_GBP"
+        value="3,000.00"
+      />
+    </div>
+  </div>
+</div>
+`;

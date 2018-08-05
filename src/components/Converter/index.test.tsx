@@ -10,7 +10,7 @@ afterEach(cleanup);
 
 test('Converter euro to pound', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="EUR"
       defaultValue={2000}
@@ -25,11 +25,13 @@ test('Converter euro to pound', () => {
   // Assert
   expect(inputEUR.value).toBe('€ 2,000.00');
   expect(inputGBP.value).toBe('£ 1,717.94');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter euro to pound with different value', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="EUR"
       defaultValue={3000}
@@ -44,11 +46,13 @@ test('Converter euro to pound with different value', () => {
   // Assert
   expect(inputEUR.value).toBe('€ 3,000.00');
   expect(inputGBP.value).toBe('£ 2,578.16');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter euro to pound with different rate', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="EUR"
       defaultValue={2000}
@@ -63,11 +67,13 @@ test('Converter euro to pound with different rate', () => {
   // Assert
   expect(inputEUR.value).toBe('€ 2,000.00');
   expect(inputGBP.value).toBe('£ 1,778.84');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter euro to pound with different fee', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="EUR"
       defaultValue={2000}
@@ -82,11 +88,13 @@ test('Converter euro to pound with different fee', () => {
   // Assert
   expect(inputEUR.value).toBe('€ 2,000.00');
   expect(inputGBP.value).toBe('£ 1,710.44');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter pound to euro', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="GBP"
       defaultValue={2000}
@@ -101,11 +109,13 @@ test('Converter pound to euro', () => {
   // Assert
   expect(inputEUR.value).toBe('€ 2,322.49');
   expect(inputGBP.value).toBe('£ 2,000.00');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter pound to euro with different value', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="GBP"
       defaultValue={3000}
@@ -120,11 +130,13 @@ test('Converter pound to euro with different value', () => {
   // Assert
   expect(inputEUR.value).toBe('€ 3,484.98');
   expect(inputGBP.value).toBe('£ 3,000.00');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter pound to euro with different rate', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="GBP"
       defaultValue={2000}
@@ -139,11 +151,13 @@ test('Converter pound to euro with different rate', () => {
   // Assert
   expect(inputEUR.value).toBe('€ 2,243.00');
   expect(inputGBP.value).toBe('£ 2,000.00');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter pound to euro with different fee', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="GBP"
       defaultValue={2000}
@@ -158,11 +172,13 @@ test('Converter pound to euro with different fee', () => {
   // Assert
   expect(inputEUR.value).toBe('€ 2,314.99');
   expect(inputGBP.value).toBe('£ 2,000.00');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter euro to pound dynamic', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="EUR"
       defaultValue={2000}
@@ -180,11 +196,13 @@ test('Converter euro to pound dynamic', () => {
 
   // Assert
   expect(inputGBP.value).toBe('£ 2,578.16');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter euro to pound dynamic with different fee', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="EUR"
       defaultValue={2000}
@@ -202,11 +220,13 @@ test('Converter euro to pound dynamic with different fee', () => {
 
   // Assert
   expect(inputGBP.value).toBe('£ 2,570.66');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter euro to pound dynamic with different rate', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="EUR"
       defaultValue={2000}
@@ -224,12 +244,14 @@ test('Converter euro to pound dynamic with different rate', () => {
 
   // Assert
   expect(inputGBP.value).toBe('£ 2,669.51');
+
+  expect(container).toMatchSnapshot();
 });
 
 
 test('Converter pound to euro dynamic', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="GBP"
       defaultValue={2000}
@@ -247,11 +269,13 @@ test('Converter pound to euro dynamic', () => {
 
   // Assert
   expect(inputEUR.value).toBe('€ 3,484.98');
+
+  expect(container).toMatchSnapshot();
 });
 
 test('Converter pound to euro dynamic with different fee', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="GBP"
       defaultValue={2000}
@@ -269,11 +293,14 @@ test('Converter pound to euro dynamic with different fee', () => {
 
   // Assert
   expect(inputEUR.value).toBe('€ 3,477.48');
+
+  expect(container).toMatchSnapshot();
+  
 });
 
 test('Converter pound to euro dynamic with different rate', () => {
   // Arrange
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <Converter
       defaultCurrency="GBP"
       defaultValue={2000}
@@ -291,4 +318,6 @@ test('Converter pound to euro dynamic with different rate', () => {
 
   // Assert
   expect(inputEUR.value).toBe('€ 3,365.75');
+
+  expect(container).toMatchSnapshot();
 });
