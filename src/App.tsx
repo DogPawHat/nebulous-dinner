@@ -18,7 +18,6 @@ import {
 } from './grids';
 import Details from './components/Details';
 
-
 // CSS Class Names
 const navBarClassName = 'App__navbar';
 const instructionClassName = 'App__instructions';
@@ -50,7 +49,6 @@ const AppRoot = styled(MainGrid)`
   }
 `;
 
-
 // Main component
 const App = () => (
   <AppRoot>
@@ -61,7 +59,11 @@ const App = () => (
       <div className={mainGridChild}>
         <NavBar currentStep="step_1" className={navBarClassName} />
         <Instructions className={instructionClassName} />
-        <Converter className={converterClassName} />
+        <Converter
+          defaultCurrency="EUR"
+          defaultValue={2000}
+          className={converterClassName}
+        />
         <div className={buttonRowClassName}>
           <Button>Next</Button>
         </div>
@@ -69,14 +71,14 @@ const App = () => (
       </div>
     </MainContainerGrid>
     <SecondaryContainerGrid>
-      <Details 
+      <Details
         className={secondaryGridChild}
-        sending='€2000.00'
-        reciving='£1717.94'
-        rate='0.8.6022'
-        date='25th November'
-        fee='£2.50'
-        savings='£66.19'
+        sending="€2000.00"
+        reciving="£1717.94"
+        rate="0.8.6022"
+        date="25th November"
+        fee="£2.50"
+        savings="£66.19"
       />
     </SecondaryContainerGrid>
   </AppRoot>

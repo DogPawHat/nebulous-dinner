@@ -1,3 +1,6 @@
+// This file handles all the grid layout configuration for the main page
+// And exports the resultant CSS class names and styled components
+
 import styled, { css } from 'react-emotion';
 import facepaint from 'facepaint';
 

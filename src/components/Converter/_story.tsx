@@ -12,5 +12,9 @@ const sizeAndMargin = css`
 
 storiesOf('Converter', module).add(
   'default',
-  withInfo({ inline: true })(() => <Converter className={sizeAndMargin} />)
+  withInfo({ inline: true })(() => <Converter
+    defaultCurrency='EUR'
+    defaultValue={2000}
+    eurToGbpRate={0.86022}
+    className={sizeAndMargin} />)
 );

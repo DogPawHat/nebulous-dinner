@@ -15,4 +15,5 @@ Problems faced so far:
 - I had some issues with the fonts (Post Grotesk) importing into `create-react-app` and Avocode, had to do some trial and error before finding the right solution
 - Had to do some heavy editing of the Webpack file for storybook due to it not loading the svg logo proberly when `create-react-app` didn't have issues.
   - I'm using an alpha version of `@storybook/react` which has updated its default svg loader to something a bit more unreiliable.
-- 
+- Was a bit of trouble getting the boxes of the converters to have proper border colours and radius. There not acually all in the same box; there a seris of boxes with diffreent styles depending on there position in relation to there siblings and whether or not they are active and have to show a blue border, without having a double space border.
+- Lot of work had to be done with the CSS grid on the main page, especally since I was nesting grids inside sub sections of the page. I put all of the grid configuration in it's own page to cut down on the length of `App.tsx`

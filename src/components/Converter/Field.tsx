@@ -1,14 +1,16 @@
 import React, { SFC, HTMLAttributes } from 'react';
 import styled, { css } from 'react-emotion';
-import { fontSizes, fontWeights, colors } from '../../styleUtils';
 import color from 'color';
 import MaskedInput from 'react-text-mask';
 import { createNumberMask } from 'text-mask-addons/dist/textMaskAddons';
+
+import { fontSizes, fontWeights, colors } from '../../styleUtils';
 
 // Interfaces
 export interface IConverterFieldProps extends HTMLAttributes<HTMLDivElement> {
   description: string;
   active: boolean;
+  value: string;
   currency: 'EUR' | 'GBP';
   position?: 'top' | 'bottom';
   className?: string;
@@ -64,17 +66,17 @@ const FieldRoot = styled('div')`
 `;
 
 const prefixes = {
-  'EUR': '€ ',
-  'GBP': '£ '
+  EUR: '€ ',
+  GBP: '£ '
 };
 
-const myMask = (currency: 'EUR'| 'GBP') => (rawValue: string) => {
+const myMask = (currency: 'EUR' | 'GBP') => (rawValue: string) => {
   const numberMask = createNumberMask({
-      prefix: prefixes[currency],
-      includeThousandsSeparator: true,
-      allowDecimal: true,
-      requireDecimal: true,
-      allowLeadingZeroes: false
+    prefix: prefixes[currency],
+    includeThousandsSeparator: true,
+    allowDecimal: true,
+    requireDecimal: true,
+    allowLeadingZeroes: false
   });
   const resultMask = numberMask(rawValue);
 
@@ -82,23 +84,27 @@ const myMask = (currency: 'EUR'| 'GBP') => (rawValue: string) => {
   const result = decimalsRegex.exec(rawValue);
   // In case there is only one decimal
   if (result && result[1].length < 2) {
-      resultMask.push('0');
+    resultMask.push('0');
   } else if (!result) {
-      resultMask.push('0');
-      resultMask.push('0');
+    resultMask.push('0');
+    resultMask.push('0');
   }
 
   return resultMask;
 };
 
 // Main
-const Field: IConverterField = ({ description, currency, ...otherProps }) => (
+const Field: IConverterField = ({
+  description,
+  value,
+  currency,
+  ...otherProps
+}) => (
   <FieldRoot {...otherProps}>
     <p className={descriptionClassName}>{description}</p>
     <MaskedInput
-      value="$2000.00"
+      value={value}
       mask={myMask(currency)}
-      placeholder="$2000.00"
       className={inputClassName}
     />
   </FieldRoot>
