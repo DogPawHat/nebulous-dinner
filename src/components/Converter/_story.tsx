@@ -1,24 +1,16 @@
-import { withInfo } from 'storybook__addon-info';
-import { storiesOf } from 'storybook__react';
+import { withInfo } from '@storybook/addon-info';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import Field from './Field';
+import Converter from '.';
+import { css } from 'react-emotion';
 
-const stories = storiesOf('ConverterField', module)
+const sizeAndMargin = css`
+  width: 35.25rem;
+  margin: 3.3rem;
+`;
 
-stories.add(
-  'active',
-  withInfo({ inline: true })(() => (
-    <Field active={true} description="you send"/>
-  ))
-);
-
-stories.add(
-  'not active',
-  withInfo({ inline: true })(() => (
-    <Field 
-      active={false} 
-      description="reciver gets"
-    />
-  ))
+storiesOf('Converter', module).add(
+  'default',
+  withInfo({ inline: true })(() => <Converter className={sizeAndMargin} />)
 );

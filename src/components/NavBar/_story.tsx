@@ -1,5 +1,5 @@
-import { withInfo } from 'storybook__addon-info';
-import { storiesOf } from 'storybook__react';
+import { withInfo } from '@storybook/addon-info';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { css } from 'react-emotion';
 

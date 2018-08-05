@@ -69,7 +69,15 @@ const App = () => (
       </div>
     </MainContainerGrid>
     <SecondaryContainerGrid>
-      <Details className={secondaryGridChild} />
+      <Details 
+        className={secondaryGridChild}
+        sending='€2000.00'
+        reciving='£1717.94'
+        rate='0.8.6022'
+        date='25th November'
+        fee='£2.50'
+        savings='£66.19'
+      />
     </SecondaryContainerGrid>
   </AppRoot>
 );
