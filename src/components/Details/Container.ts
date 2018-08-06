@@ -18,7 +18,7 @@ const mapStateToProps: MapStateToProps<
   sending: EURO(state.sending).format(true),
   reciving: POUNDS(state.convert).format(true),
   rate: state.rate.toString(),
-  fee: POUNDS(state.sending).format(true),
+  fee: POUNDS(state.fee).format(true),
   date: format(state.transactionDate, 'Do MMMM'),
   savings: "£66.19"
 });
