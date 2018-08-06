@@ -5,12 +5,13 @@ import styled, { css, Interpolation } from 'react-emotion';
 // Interfaces
 interface IModalProps {
   display: boolean;
+  classname: string;
 }
 
 type IModal = SFC<IModalProps>;
 
 // CSS Classes
-const modalMain = 'Modal__main';
+export const modalMain = 'Modal__main';
 
 const displayModal: Interpolation<IModalProps> = ({ display }) => css`
   display: ${display ? 'block' : 'none'};
@@ -29,10 +30,6 @@ const ModalRoot = styled('div')`
   > .${modalMain} {
     z-index: 15;
     position:fixed;
-    background: white;
-    border-radius: 0.25rem;
-    width: 80%;
-    height: auto;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
@@ -40,11 +37,9 @@ const ModalRoot = styled('div')`
 `;
 
 // Main Component
-const Modal: IModal = ({display, children}) => (
-  <ModalRoot display={display}>
-    <div className={modalMain} >
-      {children}
-    </div>
+const Modal: IModal = ({children, ...otherProps}) => (
+  <ModalRoot {...otherProps}>
+    {children}
   </ModalRoot>
 );
 

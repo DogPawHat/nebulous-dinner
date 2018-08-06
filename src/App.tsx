@@ -17,8 +17,8 @@ import {
   secondaryGridChild
 } from './grids';
 import Details from './components/Details';
-import Modal from './components/Modal';
-import ModalDectivateButton from './components/ModalDeactivateButton';
+import Modal, { modalMain } from './components/Modal';
+import IdentityVerification from './components/IdentityVerification';
 
 // CSS Class Names
 const navBarClassName = 'App__navbar';
@@ -76,7 +76,7 @@ const App = () => (
       </SecondaryContainerGrid>
     </AppRoot>
     <Modal>
-      <ModalDectivateButton>Next</ModalDectivateButton>
+      <IdentityVerification className={modalMain}/>
     </Modal>
   </>
 );

@@ -2,20 +2,21 @@ import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import Details from './View';
+import IdentityVerification from './View';
 import { css } from 'react-emotion';
 
 const sizeAndMargin = css`
-  margin: 3.3rem;
+  padding: 3.3rem;
+  background-color: rgba(0,0,0,0.6);
 `;
 
-const DetailsStories = storiesOf('Details', module)
+const DetailsStories = storiesOf('IdentityVerification', module)
 
 DetailsStories.add(
   'default',
   withInfo({ inline: true })(() => (
-    <Details
-      className={sizeAndMargin}
-    />
+    <div className={sizeAndMargin}>
+      <IdentityVerification />
+    </div>
   ))
 );
