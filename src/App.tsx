@@ -5,7 +5,7 @@ import SiteHeader from './components/SiteHeader';
 import NavBar from './components/NavBar';
 import Instructions from './components/Instructions';
 import Converter from './components/Converter';
-import Button from './components/Button';
+import ModalActivateButton from './components/ModalActivateButton';
 import Footer from './components/Footer';
 import {
   MainGrid,
@@ -17,6 +17,7 @@ import {
   secondaryGridChild
 } from './grids';
 import Details from './components/Details';
+import Modal from './components/Modal';
 
 // CSS Class Names
 const navBarClassName = 'App__navbar';
@@ -51,27 +52,32 @@ const AppRoot = styled(MainGrid)`
 
 // Main component
 const App = () => (
-  <AppRoot>
-    <HeaderContainerGrid>
-      <SiteHeader className={headerGridChild} />
-    </HeaderContainerGrid>
-    <MainContainerGrid>
-      <div className={mainGridChild}>
-        <NavBar currentStep="step_1" className={navBarClassName} />
-        <Instructions className={instructionClassName} />
-        <Converter className={converterClassName} />
-        <div className={buttonRowClassName}>
-          <Button>Next</Button>
+  <>
+    <AppRoot>
+      <HeaderContainerGrid>
+        <SiteHeader className={headerGridChild} />
+      </HeaderContainerGrid>
+      <MainContainerGrid>
+        <div className={mainGridChild}>
+          <NavBar currentStep="step_1" className={navBarClassName} />
+          <Instructions className={instructionClassName} />
+          <Converter className={converterClassName} />
+          <div className={buttonRowClassName}>
+            <ModalActivateButton>Next</ModalActivateButton>
+          </div>
+          <Footer className={footerClassName} />
         </div>
-        <Footer className={footerClassName} />
-      </div>
-    </MainContainerGrid>
-    <SecondaryContainerGrid>
-      <Details
-        className={secondaryGridChild}
-      />
-    </SecondaryContainerGrid>
-  </AppRoot>
+      </MainContainerGrid>
+      <SecondaryContainerGrid>
+        <Details
+          className={secondaryGridChild}
+        />
+      </SecondaryContainerGrid>
+    </AppRoot>
+    <Modal>
+      <div>Derp</div>
+    </Modal>
+  </>
 );
 
 export default App;

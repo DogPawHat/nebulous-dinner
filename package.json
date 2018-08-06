@@ -19,6 +19,7 @@
     "react-text-mask": "^5.4.3",
     "recompose": "^0.28.1",
     "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5",
     "text-mask-addons": "^3.8.0",
     "typesafe-actions": "^2.0.4"
   },

@@ -1,6 +1,6 @@
 import { connect, MapStateToProps } from 'react-redux';
 
-import { IState, updateCurrency } from '../../ducks';
+import { IState, actions } from '../../ducks';
 import { IConverterStateProps, IConverterOwnProps, IConverterDispatchProps } from './interfaces';
 
 const mapStateToProps: MapStateToProps<
@@ -15,7 +15,7 @@ const mapStateToProps: MapStateToProps<
 });
 
 const mapDispactchToProps: IConverterDispatchProps = {
-  notifyUpdate: updateCurrency
+  notifyUpdate: actions.updateCurrency
 };
 
 const enhance = connect(mapStateToProps, mapDispactchToProps);
