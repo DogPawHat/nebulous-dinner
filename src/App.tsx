@@ -18,6 +18,7 @@ import {
 } from './grids';
 import Details from './components/Details';
 import Modal from './components/Modal';
+import ModalDectivateButton from './components/ModalDeactivateButton';
 
 // CSS Class Names
 const navBarClassName = 'App__navbar';
@@ -75,7 +76,7 @@ const App = () => (
       </SecondaryContainerGrid>
     </AppRoot>
     <Modal>
-      <div>Derp</div>
+      <ModalDectivateButton>Next</ModalDectivateButton>
     </Modal>
   </>
 );
