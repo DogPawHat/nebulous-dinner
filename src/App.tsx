@@ -59,13 +59,7 @@ const App = () => (
       <div className={mainGridChild}>
         <NavBar currentStep="step_1" className={navBarClassName} />
         <Instructions className={instructionClassName} />
-        <Converter
-          defaultCurrency="EUR"
-          defaultValue={2000}
-          eurToGbpRate={0.86022}
-          fee={2.50}
-          className={converterClassName}
-        />
+        <Converter className={converterClassName} />
         <div className={buttonRowClassName}>
           <Button>Next</Button>
         </div>
@@ -75,12 +69,6 @@ const App = () => (
     <SecondaryContainerGrid>
       <Details
         className={secondaryGridChild}
-        sending="€2000.00"
-        reciving="£1717.94"
-        rate="0.8.6022"
-        date="25th November"
-        fee="£2.50"
-        savings="£66.19"
       />
     </SecondaryContainerGrid>
   </AppRoot>

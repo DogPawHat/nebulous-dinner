@@ -1,8 +1,8 @@
-import { withInfo } from '@storybook/addon-info';
-import { storiesOf } from '@storybook/react';
+import { withInfo } from 'storybook__addon-info';
+import { storiesOf } from 'storybook__react';
 import React from 'react';
 
-import Converter from '.';
+import Converter from './View';
 import { css } from 'react-emotion';
 
 const sizeAndMargin = css`

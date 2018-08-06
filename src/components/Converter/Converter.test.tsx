@@ -3,7 +3,7 @@ import { render, cleanup, fireEvent } from 'react-testing-library';
 // this add custom jest matchers from jest-dom
 import 'jest-dom/extend-expect';
 
-import Converter from '.';
+import Converter from './View';
 
 // automatically unmount and cleanup DOM after the test is finished.
 afterEach(cleanup);
