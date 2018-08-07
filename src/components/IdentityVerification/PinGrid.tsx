@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { colors } from '../../styleUtils';
+import { colors, fontWeights, fontSizes } from '../../styleUtils';
 
 
 interface IPinInputProps {
@@ -13,22 +13,24 @@ const headerClassName = 'PinGrid__header';
 const footerLeftClassName = 'PinGrid__footer-left';
 const footerRightClassName = 'PinGrid__footer-light';
 
-const pinInputClassName = 'PinGrid__pin-input';
-
-const PinInputCell = styled('div')`
+const PinInputCell = styled('input')`
   grid-area: ${(props: IPinInputProps) => props.key};
-  padding: 1rem;
-  > input.${pinInputClassName} {
-    border-radius: 0.25rem;
-    border: 1px solid ${colors.lightgrey};
-    background-color: ${colors.white};
-    width: 100%;
-  }
+  border-radius: 0.25rem;
+  border: 1px solid ${colors.lightgrey};
+  background-color: ${colors.white};
+  width: 100%;
+`;
+
+const FooterLink = styled('p')`
+  color: ${colors.lightblack};
+  font-size: ${fontSizes.small};
+  font-weight: ${fontWeights.book};
 `;
 
 const PinGridRoot = styled('div')`
   display: grid;
-  grid: 1fr auto 1fr / repeat(6, 1fr);
+  grid: 2.55rem 3.375rem 1fr / repeat(6, 3.375rem);
+  column-gap: 0.875rem;
   height: 100%;
   grid-template-areas: 
     "header header header header header header"
@@ -36,6 +38,9 @@ const PinGridRoot = styled('div')`
     "footer-left footer-left footer-left footer-right footer-right footer-right";
   > .${headerClassName} {
     grid-area: header;
+    line-height: 1.688rem;
+    font-size: ${fontSizes.medium};
+    font-weight: ${fontWeights.medium};
   }
   > .${footerLeftClassName} {
     grid-area: footer-left;
@@ -49,16 +54,18 @@ const PinGridRoot = styled('div')`
 
 const PinGrid = () => (
   <PinGridRoot>
-    <div className={headerClassName} >Header derp</div>
+    <div className={headerClassName} >Enter the code sent via SMS to</div>
     {
       keys.map(key => (
-        <PinInputCell key={`input-${key}`}>
-          <input className={pinInputClassName} />
-        </PinInputCell>
+        <PinInputCell key={`input-${key}`} />
       ))
     }
-    <div className={footerLeftClassName} >FooterDerp</div>
-    <div className={footerRightClassName} >FooterHerpADerp</div>
+    <div className={footerLeftClassName} >
+      <FooterLink>Receive a new code</FooterLink>
+    </div>
+    <div className={footerRightClassName} >
+      <FooterLink>Receive code via call instead</FooterLink>
+    </div>
   </PinGridRoot>
 );
 

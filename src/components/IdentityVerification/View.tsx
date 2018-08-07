@@ -1,6 +1,6 @@
 import React, { SFC } from 'react';
 import styled, {css} from 'react-emotion';
-import { colors } from '../../styleUtils';
+import { colors, fontSizes, fontWeights } from '../../styleUtils';
 
 import PinGrid from './PinGrid';
 
@@ -11,6 +11,11 @@ interface IIdentiyVerification {
 const headerClassName = 'IdentityVerification__header';
 const middleClassname = 'IdentityVerification__middle';
 const footerClassName = 'IdentityVerification__footer';
+
+
+const topMiddlePadding = css`
+  padding: 2rem;
+`;
 
 const middleBgColor = css`
   background-color: #fafafa;
@@ -38,19 +43,33 @@ const IdentityVerificationRoot = styled('div')`
   width: 36.25rem;
   z-index: 50;
   > .${headerClassName} {
+    ${topMiddlePadding}
     ${borderCommon}
     ${whiteBgColor}
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
     height: 7.15rem;
+    display: flex;
+    flex-flow: column nowrap;
+    > h4 {
+      font-size: ${fontSizes.large};
+      font-weight: ${fontWeights.medium};
+      color: #768895;
+    }
+    > p {
+      font-size: ${fontSizes.small};
+      font-weight: ${fontWeights.book};
+      color: #768895;
+    }
   }
   > .${middleClassname} {
     ${borderCommon}
     ${middleBgColor}
-    padding: 1.5rem 4rem;
+    padding: 3.375rem 0 0 4rem;
     height: 16.5rem;
   }
   > .${footerClassName} {
+    ${topMiddlePadding}
     ${borderCommon}
     ${whiteBgColor}
     height: 5.65rem;
@@ -61,7 +80,10 @@ const IdentityVerificationRoot = styled('div')`
 
 const View: SFC<IIdentiyVerification> = ({className}) => (
   <IdentityVerificationRoot className={className}>
-    <div className={headerClassName}>HerpADerp</div>
+    <div className={headerClassName}>
+      <h4>Identity verification required</h4>
+      <p>For your security, we ocassionally require you to verify your identity by entering a code sent to your mobile device.</p>
+    </div>
     <div className={middleClassname}>
       <PinGrid />
     </div>
