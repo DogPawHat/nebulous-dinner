@@ -2,6 +2,8 @@ import React, { SFC } from 'react';
 import styled, {css} from 'react-emotion';
 import { colors } from '../../styleUtils';
 
+import PinGrid from './PinGrid';
+
 interface IIdentiyVerification {
   className?: string;
 }
@@ -45,6 +47,7 @@ const IdentityVerificationRoot = styled('div')`
   > .${middleClassname} {
     ${borderCommon}
     ${middleBgColor}
+    padding: 1.5rem 4rem;
     height: 16.5rem;
   }
   > .${footerClassName} {
@@ -60,9 +63,7 @@ const View: SFC<IIdentiyVerification> = ({className}) => (
   <IdentityVerificationRoot className={className}>
     <div className={headerClassName}>HerpADerp</div>
     <div className={middleClassname}>
-      <div className={inputGrid}>
-      
-      </div>
+      <PinGrid />
     </div>
     <div className={footerClassName}>Derp</div>
   </IdentityVerificationRoot>

@@ -22,16 +22,18 @@ const PinInputCell = styled('div')`
     border-radius: 0.25rem;
     border: 1px solid ${colors.lightgrey};
     background-color: ${colors.white};
+    width: 100%;
   }
 `;
 
 const PinGridRoot = styled('div')`
   display: grid;
-  grid:
-    [row1-start] "header header header header header header" 1fr [row1-end]
-    [row2-start] "input-1 input-2 input-3 input-4 input-5 input-6" 1fr [row2-end]
-    [row3-start] "footer-left footer-left footer-left footer-right footer-right footer-right" 24px [row3-end]
-    / repeat(6, 1fr);
+  grid: 1fr auto 1fr / repeat(6, 1fr);
+  height: 100%;
+  grid-template-areas: 
+    "header header header header header header"
+    "input-1 input-2 input-3 input-4 input-5 input-6"
+    "footer-left footer-left footer-left footer-right footer-right footer-right";
   > .${headerClassName} {
     grid-area: header;
   }
@@ -47,7 +49,7 @@ const PinGridRoot = styled('div')`
 
 const PinGrid = () => (
   <PinGridRoot>
-    <div className={headerClassName} />
+    <div className={headerClassName} >Header derp</div>
     {
       keys.map(key => (
         <PinInputCell key={`input-${key}`}>
@@ -55,8 +57,8 @@ const PinGrid = () => (
         </PinInputCell>
       ))
     }
-    <div className={footerLeftClassName} />
-    <div className={footerRightClassName} />
+    <div className={footerLeftClassName} >FooterDerp</div>
+    <div className={footerRightClassName} >FooterHerpADerp</div>
   </PinGridRoot>
 );
 
