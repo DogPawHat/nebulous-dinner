@@ -59,7 +59,11 @@ const IdentityVerificationRoot = styled('div')`
 const View: SFC<IIdentiyVerification> = ({className}) => (
   <IdentityVerificationRoot className={className}>
     <div className={headerClassName}>HerpADerp</div>
-    <div className={middleClassname}>Derp</div>
+    <div className={middleClassname}>
+      <div className={inputGrid}>
+      
+      </div>
+    </div>
     <div className={footerClassName}>Derp</div>
   </IdentityVerificationRoot>
 )
