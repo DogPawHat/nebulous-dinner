@@ -13,11 +13,15 @@ export const fontSizes = {
 };
 
 export const colors = {
+  verylightgrey: '#fafafa',
   lightgrey: '#E6E6E6',
   grey: '#9e9e9e',
   darkgrey: '#757575',
   blue: '#6ec0e6',
+  darkblue: '#589ab8',
+  lightblue: '#cae8f5',
   lightblack: '#616161',
+  verylightblack: '#768895',
   black: '#32323c',
   white: '#FFFFFF'
 };
