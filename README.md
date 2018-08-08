@@ -1,7 +1,7 @@
 How to use this app
 
 Basic Browsing:
-1. Go to [insert link here](http://nebulous-breakfast.surge.sh/)
+1. Go to the app hosted [here](http://nebulous-breakfast.surge.sh/)
 2. You can type a number of currency into the converter. Both fields are tied together (with the GBP field subtraced a fee of 2.50). The details of the conversion will appear in the detials sidebar.
 3. When you click next, you will open the SMS code modal
 4. When the modal is open, you can click next to clode the modal
