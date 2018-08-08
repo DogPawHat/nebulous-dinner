@@ -14,5 +14,5 @@ Development Set up
 - `yarn run storybook` to view the Storybook for this app at `localhost:6006`. This will allow you to view the components of the app in isolation of each other, with some options not used in the main app.
 - `yarn build` to build the app for distribution. (Won't cover hosting here, but I use [surge.sh](https://surge.sh))
 
-This was build with `create-react-app`, non-ejected. The default readme can be found at `CRA_README.md`. More detials on the process is at `PROCESS.md`
+This was build with `create-react-app`, non-ejected. The default readme can be found at [`CRA_README.md`](https://github.com/DogPawHat/nebulous-dinner/blob/master/CRA_README.md). More details on the process is at [`PROCESS.md`](https://github.com/DogPawHat/nebulous-dinner/blob/master/PROCESS.md)
 
