@@ -12,8 +12,6 @@ import BaseApp from './App';
 import 'normalize.css';
 import './index.css';
 
-
-
 const store = createStore(
   reducer,
   devToolsEnhancer({})

@@ -23,10 +23,16 @@ const mq = facepaint([
 
 // Main Grid Props
 const mainGridSmall = `
-  'header' 4.15rem
-  'main' auto
-  'secondary' auto
-  / auto;
+  'header header header' 4.15rem
+  '. main .' auto
+  '. secondary .' auto
+  / 1.5rem auto 1.5rem;
+`;
+
+const mainGridMedium = `
+  'header header header header' 4.15rem
+  'main main secondary secondary' auto
+  / 3.3rem auto auto 3.3rem;
 `;
 
 
@@ -37,14 +43,20 @@ const mainGridLarge = `
 `;
 
 const mainGrid = mq({
-  grid: [mainGridSmall, mainGridSmall, mainGridLarge]
+  grid: [mainGridSmall, mainGridMedium, mainGridLarge]
 })
 
 // Sub Grid Props
 const headerSubGridSmall = `
-  'sub-header' auto
-  / 100%;
+  '. sub-header .' auto
+  / 1.5rem auto 1.5rem;
 `;
+
+const headerSubGridMedium = `
+  '. sub-header .' auto
+  / 3.3rem auto 3.3rem;
+`;
+
 
 const headerSubGridLarge = `
   '. sub-header .' auto
@@ -52,13 +64,19 @@ const headerSubGridLarge = `
 `;
 
 const headerSubGrid = mq({
-  grid: [headerSubGridSmall, headerSubGridSmall, headerSubGridLarge]
+  grid: [headerSubGridSmall, headerSubGridMedium, headerSubGridLarge]
 });
 
 const mainSubGridSmall = `
-'.' ${spaceBetween}rem
-'sub-main' auto
-/ 100%;
+  '. . .' ${spaceBetween}rem
+  '. sub-main .' auto
+  / 1.5rem auto 1.5rem;
+`;
+
+const mainSubGridMedium = `
+  '. . .' ${spaceBetween}rem
+  '. sub-main .' auto
+  / 3.3rem auto ${spaceBetween}rem;
 `;
 
 const mainSubGridLarge = `
@@ -68,13 +86,19 @@ const mainSubGridLarge = `
 `;
 
 const mainSubGrid = mq({
-  grid: [mainSubGridSmall, mainSubGridSmall, mainSubGridLarge]
+  grid: [mainSubGridSmall, mainSubGridMedium, mainSubGridLarge]
 });
 
 const secondSubGridSmall = `
-  '.' ${spaceBetween}rem
-  'sub-second' auto
-  / 100%;
+  '. . .' ${spaceBetween}rem
+  '. sub-second .' auto
+  / 1.5rem auto 1.5rem;
+`;
+
+const secondSubGridMedium = `
+  '. . .' ${spaceBetween}rem
+  '. sub-second .' auto
+  / ${spaceBetween}rem ${secondColumn}rem auto;
 `;
 
 const secondSubGridLarge = `
@@ -84,14 +108,14 @@ const secondSubGridLarge = `
 `;
 
 const secondSubGrid = mq({
-  grid: [secondSubGridSmall, secondSubGridSmall, secondSubGridLarge]
+  grid: [secondSubGridSmall, secondSubGridMedium, secondSubGridLarge]
 });
 
 
 // Exports
 export const MainGrid = styled('div')`
-  min-height: 100vh;
   display: grid;
+  height: 100vh;
   ${mainGrid}
 `;
 

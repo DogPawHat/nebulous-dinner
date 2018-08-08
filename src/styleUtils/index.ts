@@ -27,7 +27,7 @@ export const colors = {
 };
 
 export const breakpoints = {
-  small: '@media(min-width: 420px)',
-  medium: '@media(min-width: 920px)',
-  large: '@media(min-width: 1120px)',
+  small: '@media(min-width: 920px)',
+  medium: '@media(min-width: 1120px)',
+  large: '@media(min-width: 1440px)',
 };

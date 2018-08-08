@@ -55,6 +55,24 @@
       format('woff');
 }
 
+@media(max-width: 420px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media(max-width: 920px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media(min-width: 1120px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -66,7 +84,7 @@ body {
 }
 
 #root {
-  display: contents;
+  display: contents
 }
 
 h1,
