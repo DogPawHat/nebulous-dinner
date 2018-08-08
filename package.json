@@ -2,6 +2,7 @@
   "name": "currencyfair-interview",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://nebulous-breakfast.surge.sh/",
   "dependencies": {
     "color": "^3.0.0",
     "currency.js": "^1.1.4",

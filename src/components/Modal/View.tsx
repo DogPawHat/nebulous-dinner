@@ -31,7 +31,7 @@ const displayModal: Interpolation<IModalProps> = ({ display }) => css`
 const mqVariables = mq({
   left: [0,'50%', '50%'],
   top: ['25%', '50%', '50%'],
-  width: ['100%', undefined, undefined],
+  width: ['100%', '36.25rem', '36.25rem'],
   transform: [
     undefined,
     'translate(-50%,-50%)',
