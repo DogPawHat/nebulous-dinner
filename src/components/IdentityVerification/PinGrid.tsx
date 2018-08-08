@@ -82,6 +82,7 @@ const PinGridRoot = styled('div')`
   }
   > .${footerRightClassName} {
     grid-area: footer-right;
+    text-align: right;
   }
 `;
 

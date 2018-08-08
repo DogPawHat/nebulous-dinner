@@ -30,6 +30,9 @@ const FieldChild = styled(Field)`
 const convertCurrency = (money: CurrencyInput, rate: number) =>
   currency(money).multiply(rate);
 
+const currencyLessThen = (a: CurrencyInput, b: CurrencyInput) =>
+  currency(a).value <= currency(b).value;
+
 class View extends Component<IConverterProps, IState> {
   public state = {
     eurValue: currency(0),
@@ -40,25 +43,36 @@ class View extends Component<IConverterProps, IState> {
     super(props);
     if (props.defaultCurrency === 'EUR') {
       const defaultMoney = currency(this.props.defaultValue);
-      this.state = {
-        eurValue: defaultMoney,
-        gbpValue: convertCurrency(defaultMoney, props.eurToGbpRate).subtract(
-          props.fee
-        )
+      if (defaultMoney.value === 0 || currencyLessThen(defaultMoney.value, this.props.fee)) {
+        this.state = {
+          eurValue: defaultMoney,
+          gbpValue: currency(0),
+        };
+      } else {
+        this.state = {
+          eurValue: defaultMoney,
+          gbpValue: convertCurrency(defaultMoney, this.props.eurToGbpRate).subtract(
+            this.props.fee
+          )
+        }
       };
-      return;
+      return this;
     }
 
     if (props.defaultCurrency === 'GBP') {
       const defaultMoney = currency(this.props.defaultValue);
-      this.state = {
-        eurValue: convertCurrency(
-          defaultMoney,
-          1 / props.eurToGbpRate
-        ).subtract(props.fee),
-        gbpValue: defaultMoney
+      if (defaultMoney.value === 0) {
+        this.state = {
+          eurValue: currency(0),
+          gbpValue: currency(0),
+        };
+      } else {
+        this.state = {
+          eurValue: convertCurrency(defaultMoney.add(this.props.fee), 1 / this.props.eurToGbpRate),
+          gbpValue: defaultMoney
+        }
       };
-      return;
+      return this;
     }
   }
 
@@ -85,49 +99,61 @@ class View extends Component<IConverterProps, IState> {
 
   private updateEurValue = (newValue: string) => {
     const newMoney = currency(newValue);
-    this.setState({
-      eurValue: newMoney,
-      gbpValue: convertCurrency(newMoney, this.props.eurToGbpRate).subtract(
-        this.props.fee
-      )
-    });
+    if (newMoney.value === 0 || currencyLessThen(newMoney.value, this.props.fee)) {
+      this.setState({
+        eurValue: newMoney,
+        gbpValue: currency(0),
+      });
+    } else {
+      this.setState({
+        eurValue: newMoney,
+        gbpValue: convertCurrency(newMoney, this.props.eurToGbpRate).subtract(
+          this.props.fee
+        )
+      });
+    };
   };
 
   private updateGbpValue = (newValue: string) => {
     const newMoney = currency(newValue);
-    this.setState({
-      eurValue: convertCurrency(newMoney, 1 / this.props.eurToGbpRate).subtract(
-        this.props.fee
-      ),
-      gbpValue: newMoney
-    });
+    if (newMoney.value === 0) {
+      this.setState({
+        eurValue: currency(0),
+        gbpValue: currency(0),
+      });
+    } else {
+      this.setState({
+        eurValue: convertCurrency(newMoney.add(this.props.fee), 1 / this.props.eurToGbpRate),
+        gbpValue: newMoney,
+      });
+    }
   };
 
   private renderFields: IActiveFieldTrackerRenderProp = (
     isActive,
     makeActive
   ) => (
-    <>
-      <FieldChild
-        key={fieldKeys.EUR}
-        value={this.state.eurValue.format(false)}
-        updateValue={this.updateEurValue}
-        currency="EUR"
-        active={isActive(fieldKeys.EUR)}
-        onClick={makeActive(fieldKeys.EUR)}
-        description="you send"
-      />
-      <FieldChild
-        key={fieldKeys.GBP}
-        updateValue={this.updateGbpValue}
-        value={this.state.gbpValue.format(false)}
-        currency="GBP"
-        active={isActive(fieldKeys.GBP)}
-        onClick={makeActive(fieldKeys.GBP)}
-        description="reciver gets"
-      />
-    </>
-  );
+      <>
+        <FieldChild
+          key={fieldKeys.EUR}
+          value={this.state.eurValue.format(false)}
+          updateValue={this.updateEurValue}
+          currency="EUR"
+          active={isActive(fieldKeys.EUR)}
+          onClick={makeActive(fieldKeys.EUR)}
+          description="you send"
+        />
+        <FieldChild
+          key={fieldKeys.GBP}
+          updateValue={this.updateGbpValue}
+          value={this.state.gbpValue.format(false)}
+          currency="GBP"
+          active={isActive(fieldKeys.GBP)}
+          onClick={makeActive(fieldKeys.GBP)}
+          description="reciver gets"
+        />
+      </>
+    );
 }
 
 export default View;

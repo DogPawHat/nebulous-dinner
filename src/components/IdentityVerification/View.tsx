@@ -70,7 +70,7 @@ const IdentityVerificationRoot = styled('div')`
   > .${middleClassname} {
     ${borderCommon}
     ${middleBgColor}
-    padding: 3.375rem 0 0 4rem;
+    padding: 3.375rem 5.75rem;
     height: 16.5rem;
   }
   > .${footerClassName} {
