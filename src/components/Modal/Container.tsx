@@ -1,6 +1,6 @@
 import { connect, MapStateToProps } from 'react-redux';
 
-import { IState } from 'src/ducks';
+import { IState } from '../../ducks';
 import { IModalStateProps } from './interfaces';
 
 const mapStateToProps: MapStateToProps<IModalStateProps, {}, IState> = ({modalDisplay}) => ({

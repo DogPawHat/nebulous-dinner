@@ -1,6 +1,6 @@
 import { connect, MapDispatchToPropsFunction } from 'react-redux';
 
-import { actions } from 'src/ducks';
+import { actions } from '../../ducks';
 
 import { IModalActivateButton } from './interfaces';
 
